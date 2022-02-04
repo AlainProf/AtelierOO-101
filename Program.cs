@@ -14,7 +14,7 @@ namespace AtelierOO_101
             Humain h2 = new Humain(d, "Joe");
             h2.Afficher();*/
 
-            Adresse adr = new Adresse("207", "Rose LaTulippe", "Ste-Adèle", "Honte à Riop");
+            Adresse adr = new Adresse("207", "Rose LaTulippe", "Ste-Adèle", "Honte à Rio");
             Humain h3 = new Humain(new DateTime(2004, 7,27), "Ludovick", adr);
             h3.Afficher();
 
