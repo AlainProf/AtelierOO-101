@@ -6,17 +6,64 @@ namespace AtelierOO_101
     {
         static void Main(string[] args)
         {
-            Console.Clear();
-            Console.WriteLine("Le Financier!");
-            CalculerRendementErgo();
-            //CalculerRemboursementPret();
+            //financier();
+           /* Humain h1 = new Humain();
+            h1.Afficher();
+
+            DateTime d = new DateTime(1989, 9, 13);
+            Humain h2 = new Humain(d, "Joe");
+            h2.Afficher();*/
+
+            Adresse adr = new Adresse("207", "Rose LaTulippe", "Ste-Adèle", "Honte à Riop");
+            Humain h3 = new Humain(new DateTime(2004, 7,27), "Ludovick", adr);
+            h3.Afficher();
+
+
+            /*Humain h4 = new Humain(new DateTime(1802, 2, 26), "Victor Hugo", new DateTime(1885,5,22));
+            h4.Afficher();*/
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        static void financier()
+        { 
+            
+            bool go = true;
+            ConsoleKey cle;
+            while (go)
+            {
+                Console.Clear();
+                Console.WriteLine("Le Financier, entrez vos paramètres:");
+                CalculerRendementErgo();
+                //CalculerRemboursementPret();
+
+                Console.WriteLine("Appuyz sur une touche pour continuer ou ESC pour terminer");
+                cle = Console.ReadKey(true).Key;
+                if (cle == ConsoleKey.Escape)
+                    go = false;
+            }
+        }
+
 
         static void CalculerRendementErgo()
         {
             string strDepot;
             string strTauxInt;
             string strDuree;
+            string strCompo;
 
             double Depot;
             double tauxInt;
@@ -29,7 +76,9 @@ namespace AtelierOO_101
             strTauxInt = Console.ReadLine();
             Console.WriteLine("Durée:");
             strDuree = Console.ReadLine();
-            Console.WriteLine("Paramètres:\nDépôt: {0}\nTaux intérêt:{1}\nDurée:{2}", strDepot, strTauxInt, strDuree);
+            Console.WriteLine("Composition de l'intérêt:");
+            strCompo = Console.ReadLine();
+            Console.WriteLine("Paramètres:\nDépôt: {0}\nTaux intérêt:{1}\nDurée:{2}\ncomposition de l'intérêt:{3}", strDepot, strTauxInt, strDuree, strCompo);
 
             Depot = Convert.ToDouble(strDepot);
             tauxInt = Convert.ToDouble(strTauxInt);
@@ -37,14 +86,42 @@ namespace AtelierOO_101
             rendementCumul = Depot;
 
             int tempsCumul = 0;
-            while (tempsCumul < duree)
+
+            switch(strCompo)
             {
-                tempsCumul++;
-                rendementCumul += tauxInt * rendementCumul;
-                Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul);
+                case "a":
+                    while (tempsCumul < duree)
+                    {
+                        tempsCumul++;
+                        rendementCumul += tauxInt * rendementCumul;
+                        Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul.ToString(".00"));
+                    }
+                    break;
+
+                case "m":
+                    while (tempsCumul < duree*12)
+                    {
+                        tempsCumul++;
+                        rendementCumul += tauxInt/12 * rendementCumul;
+                        Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul.ToString(".00"));
+                    }
+                    break;
+
+                case "q":
+                    while (tempsCumul < duree*365)
+                    {
+                        tempsCumul++;
+                        rendementCumul += tauxInt/365 * rendementCumul;
+                        Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul.ToString(".00"));
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine(" Votre choix de composition {0} est incorrect", strCompo);
+                    break;
             }
 
-            Console.WriteLine("A terme mon dépot vaut: {0}", rendementCumul);
+            Console.WriteLine("A terme mon dépot vaut: {0}", rendementCumul.ToString(".00"));
         }
 
         static void CalculerRendement()
