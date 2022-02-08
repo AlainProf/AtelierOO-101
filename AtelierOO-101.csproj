@@ -6,4 +6,8 @@
     <RootNamespace>AtelierOO_101</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\amartel\atelieroo-101\AtelierOO-101.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>

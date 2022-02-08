@@ -1,4 +1,9 @@
-﻿using System;
+﻿//----------------------------
+//   Fichier:
+//   Auteur:
+//   Date : 
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,34 +13,49 @@ namespace AtelierOO_101
 {
     class Adresse
     {
-        string _numCivic;
-        string _rue;
-        string _ville;
-        string _province;
+        /// <summary>
+        /// Représente le numéro de porte d'un batiment
+        /// </summary>
+        public string NumCivic { get; set; }
+
+        /// <summary>
+        /// Rue où est situé un batiment 
+        /// </summary>
+        public string Rue { get; set; }
+        
+        public string Ville { get; set; }
+        public string Province { get; set; }
 
         public Adresse()
         {
-            _numCivic = "0";
-            _rue = "";
-            _ville = "";
-            _province = "";
+            NumCivic = "0";
+            Rue = "";
+            Ville = "";
+            Province = "";
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nc">pour initialiser NumCivic</param>
+        /// <param name="r">pour initialiser Rue</param>
+        /// <param name="v"></param>
+        /// <param name="p"></param>
         public Adresse(string nc, string r, string v, string p)
         {
-            _numCivic = nc;
-            _rue = r;
-            _ville = v;
-            _province = p;
+            NumCivic = nc;
+            Rue = r;
+            Ville = v;
+            Province = p;
         }
 
         public void Afficher()
         {
-            Console.WriteLine("{0} {1}\nville {2}, {3} ", _numCivic, _rue, _ville, _province);
+            Console.WriteLine("{0} {1}\nville {2}, {3} ", NumCivic, Rue, Ville, Province);
         }
 
         public bool Existe()
         {
-            return _numCivic != "0";
+            return NumCivic != "0";
         }
 
     }

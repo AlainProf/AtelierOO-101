@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AtelierOO-101</name>
+    </assembly>
+    <members>
+        <member name="P:AtelierOO_101.Adresse.NumCivic">
+            <summary>
+            Représente le numéro de porte d'un batiment
+            </summary>
+        </member>
+        <member name="P:AtelierOO_101.Adresse.Rue">
+            <summary>
+            Rue où est situé un batiment 
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Adresse.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="nc">pour initialiser NumCivic</param>
+            <param name="r">pour initialiser Rue</param>
+            <param name="v"></param>
+            <param name="p"></param>
+        </member>
+        <member name="M:AtelierOO_101.ExploHumain.ExplorationHumain">
+            <summary>
+            Exploration des classes Humain et Adresse
+            </summary>
+        </member>
+        <member name="T:AtelierOO_101.Program">
+            <summary>
+            Classe principale pour l'atelier du cours 2C6 POO
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Program.Main(System.String[])">
+            <summary>
+            Point d'entrée pour toutes les expérimentation fait dans le cours 2C6 POO
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:AtelierOO_101.Program.Menu">
+            <summary>
+            Menu pricipal de l'Atelier
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Program.Options">
+            <summary>
+            Affcihage des diverses options offertes à l'utilisateur
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Program.AfficherEntete">
+            <summary>
+            Affichage d'une entête formatée surper belle présentant le programme 
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Program.CalculerRendementErgo">
+            <summary>
+            Calcul du rendement d'un dépôt à terme
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Program.SaisirParamRendement(System.Double@,System.Double@,System.Int32@,System.String@)">
+            <summary>
+             Saisie des paramètres nécessaires au calcul d'un rendement sur un dépôt
+            </summary>
+            <param name="depot">Valeur du dépôt</param>
+            <param name="tauxInt">Taux d'intérêt annuel</param>
+            <param name="duree">Le temps que le dépôt fructufiera</param>
+            <param name="compo">La fréquence de composition de l'intérêt</param>
+        </member>
+        <member name="M:AtelierOO_101.Program.CalculerRemboursementPret">
+            <summary>
+            Calcul du temps nécessaire pour rembourser un prêt avec sasie des param par l'utilisateur
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Program.CalculerRemboursement(System.Double,System.Double,System.Double)">
+            <summary>
+            Calcul du temps de remboursement d'après des param donnés
+            </summary>
+            <param name="bal"></param>
+            <param name="inte"></param>
+            <param name="mens"></param>
+        </member>
+    </members>
+</doc>

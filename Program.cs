@@ -2,145 +2,149 @@
 
 namespace AtelierOO_101
 {
+    /// <summary>
+    /// Classe principale pour l'atelier du cours 2C6 POO
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Point d'entrée pour toutes les expérimentation fait dans le cours 2C6 POO
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //financier();
-           /* Humain h1 = new Humain();
-            h1.Afficher();
-
-            DateTime d = new DateTime(1989, 9, 13);
-            Humain h2 = new Humain(d, "Joe");
-            h2.Afficher();*/
-
-            Adresse adr = new Adresse("207", "Rose LaTulippe", "Ste-Adèle", "Honte à Rio");
-            Humain h3 = new Humain(new DateTime(2004, 7,27), "Ludovick", adr);
-            h3.Afficher();
-
-
-            /*Humain h4 = new Humain(new DateTime(1802, 2, 26), "Victor Hugo", new DateTime(1885,5,22));
-            h4.Afficher();*/
+            Menu();
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        static void financier()
-        { 
-            
-            bool go = true;
-            ConsoleKey cle;
-            while (go)
+        /// <summary>
+        /// Menu pricipal de l'Atelier
+        /// </summary>
+        static void Menu()
+        {
+            ConsoleKeyInfo touche;
+            Options();
+            while ((touche = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
-                Console.Clear();
-                Console.WriteLine("Le Financier, entrez vos paramètres:");
-                CalculerRendementErgo();
-                //CalculerRemboursementPret();
-
-                Console.WriteLine("Appuyz sur une touche pour continuer ou ESC pour terminer");
-                cle = Console.ReadKey(true).Key;
-                if (cle == ConsoleKey.Escape)
-                    go = false;
+                switch ( (char)touche.Key)
+                {
+                    case 'R':
+                        Console.ReadKey(false);
+                        CalculerRendementErgo();
+                        Console.ReadKey(false);
+                        break;
+                    case 'E':
+                        Console.ReadKey(false);
+                        CalculerRemboursementPret();
+                        Console.ReadKey(false);
+                        break;
+                    case 'H':
+                        ExploHumain.ExplorationHumain();
+                        Console.ReadKey(false);
+                        break;
+                }
+                Options();
             }
         }
 
 
-        static void CalculerRendementErgo()
+        /// <summary>
+        /// Affcihage des diverses options offertes à l'utilisateur
+        /// </summary>
+        static void Options()
         {
-            string strDepot;
-            string strTauxInt;
-            string strDuree;
-            string strCompo;
+            AfficherEntete();
+            Console.WriteLine("\tR: calculer rendement");
+            Console.WriteLine("\tE: remboursement prêt");
+            Console.WriteLine("\tH: Classes Humain et Adresse");
 
-            double Depot;
-            double tauxInt;
-            int duree;
-            double rendementCumul = 0;
+            Console.WriteLine("\n\tESC pour quitter");
+            Console.Write("\n\tVotre choix :");
+        }
 
-            Console.WriteLine("Depot:");
-            strDepot = Console.ReadLine();
-            Console.WriteLine("Intérêt:");
-            strTauxInt = Console.ReadLine();
-            Console.WriteLine("Durée:");
-            strDuree = Console.ReadLine();
-            Console.WriteLine("Composition de l'intérêt:");
-            strCompo = Console.ReadLine();
-            Console.WriteLine("Paramètres:\nDépôt: {0}\nTaux intérêt:{1}\nDurée:{2}\ncomposition de l'intérêt:{3}", strDepot, strTauxInt, strDuree, strCompo);
+        /// <summary>
+        /// Affichage d'une entête formatée surper belle présentant le programme 
+        /// </summary>
+        static void AfficherEntete()
+        {
+            string entete = "Atelier du cours 2C6 POO";
+            Console.Clear();
+            for (int i = 0; i < entete.Length; i++)
+            {
+                Console.Write("-");
+            }
 
-            Depot = Convert.ToDouble(strDepot);
-            tauxInt = Convert.ToDouble(strTauxInt);
-            duree = Convert.ToInt32(strDuree);
-            rendementCumul = Depot;
+            Console.WriteLine("\n" + entete);
+
+            for (int i = 0; i < entete.Length; i++)
+            {
+                Console.Write("-");
+            }
+            Console.WriteLine(); ;
+        }
+        /// <summary>
+        /// Calcul du rendement d'un dépôt à terme
+        /// </summary>
+       static void CalculerRendementErgo()
+        {
+            SaisirParamRendement(out double depot, out double tauxInt, out int duree, out string compo);
+            double rendementCumul = depot;
 
             int tempsCumul = 0;
+            int multi = 1;
 
-            switch(strCompo)
+            switch(compo)
             {
-                case "a":
-                    while (tempsCumul < duree)
-                    {
-                        tempsCumul++;
-                        rendementCumul += tauxInt * rendementCumul;
-                        Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul.ToString(".00"));
-                    }
-                    break;
-
                 case "m":
-                    while (tempsCumul < duree*12)
-                    {
-                        tempsCumul++;
-                        rendementCumul += tauxInt/12 * rendementCumul;
-                        Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul.ToString(".00"));
-                    }
+                    multi = 12;
                     break;
 
                 case "q":
-                    while (tempsCumul < duree*365)
-                    {
-                        tempsCumul++;
-                        rendementCumul += tauxInt/365 * rendementCumul;
-                        Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul.ToString(".00"));
-                    }
+                    multi = 365;
                     break;
-
-                default:
-                    Console.WriteLine(" Votre choix de composition {0} est incorrect", strCompo);
-                    break;
+               
             }
-
+            while (tempsCumul < duree * multi)
+            {
+                tempsCumul++;
+                rendementCumul += tauxInt/multi * rendementCumul;
+                Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul.ToString(".00"));
+            }
             Console.WriteLine("A terme mon dépot vaut: {0}", rendementCumul.ToString(".00"));
         }
 
-        static void CalculerRendement()
+        /// <summary>
+        ///  Saisie des paramètres nécessaires au calcul d'un rendement sur un dépôt
+        /// </summary>
+        /// <param name="depot">Valeur du dépôt</param>
+        /// <param name="tauxInt">Taux d'intérêt annuel</param>
+        /// <param name="duree">Le temps que le dépôt fructufiera</param>
+        /// <param name="compo">La fréquence de composition de l'intérêt</param>
+        static void SaisirParamRendement(out double depot, out double tauxInt, out int duree, out string compo )
         {
-            double Depot = 1000;
-            double tauxInt = 0.10;
-            int duree = 35;
-            double rendementCumul = Depot;
+            string depotSaisi;
+            string tauxIntSaisi;
+            string dureeSaisie;
+            
+            Console.Clear();
+            Console.WriteLine("Depot:");
+            depotSaisi = Console.ReadLine();
+            Console.WriteLine("Intérêt:");
+            tauxIntSaisi = Console.ReadLine();
+            Console.WriteLine("Durée:");
+            dureeSaisie = Console.ReadLine();
+            Console.WriteLine("Composition de l'intérêt:");
+            compo = Console.ReadLine();
+            Console.WriteLine("Paramètres:\nDépôt: {0}\nTaux intérêt:{1}\nDurée:{2}\ncomposition de l'intérêt:{3}", depotSaisi, tauxIntSaisi, dureeSaisie, compo);
 
-            int tempsCumul = 0;
-            while (tempsCumul < duree)
-            {
-                tempsCumul++;
-                rendementCumul += tauxInt * rendementCumul;
-                Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul);
-            }
-            Console.WriteLine("A terme mon dépot vaut: {0}", rendementCumul);
+            depot = Convert.ToDouble(depotSaisi);
+            tauxInt = Convert.ToDouble(tauxIntSaisi);
+            duree = Convert.ToInt32(dureeSaisie);
         }
 
+        /// <summary>
+        /// Calcul du temps nécessaire pour rembourser un prêt avec sasie des param par l'utilisateur
+        /// </summary>
         static void CalculerRemboursementPret()
         {
             //string strPaiementMinimum;
@@ -157,6 +161,12 @@ namespace AtelierOO_101
             CalculerRemboursement(Convert.ToDouble(strBalance), Convert.ToDouble(strInteret), Convert.ToDouble(strPaiementMensuel));
         }
 
+        /// <summary>
+        /// Calcul du temps de remboursement d'après des param donnés
+        /// </summary>
+        /// <param name="bal"></param>
+        /// <param name="inte"></param>
+        /// <param name="mens"></param>
         static void CalculerRemboursement(double bal, double inte, double mens)
         {
             double residu = bal;
@@ -175,6 +185,9 @@ namespace AtelierOO_101
             }
             Console.WriteLine("Réglement du prêt en {0} mois", nbMois);
         }
+
+  
+
     }
 }
 
