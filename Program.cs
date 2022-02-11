@@ -23,6 +23,7 @@ namespace AtelierOO_101
         static void Menu()
         {
             ConsoleKeyInfo touche;
+            ExploSD exSD = new();
             Options();
             while ((touche = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
@@ -42,6 +43,18 @@ namespace AtelierOO_101
                         ExploHumain.ExplorationHumain();
                         Console.ReadKey(false);
                         break;
+                    case 'A':
+                        exSD.ExploArray();
+                        Console.ReadKey(false);
+                        break;
+                    case 'I':
+                        exSD.ArrayDInstances();
+                        Console.ReadKey(false);
+                        break;
+                    case 'L':
+                        exSD.ListeDInstances();
+                        Console.ReadKey(false);
+                        break;
                 }
                 Options();
             }
@@ -57,6 +70,9 @@ namespace AtelierOO_101
             Console.WriteLine("\tR: calculer rendement");
             Console.WriteLine("\tE: remboursement prêt");
             Console.WriteLine("\tH: Classes Humain et Adresse");
+            Console.WriteLine("\tA: Exploration des tableaux (array) en C#");
+            Console.WriteLine("\tI: Tableaux d'instances");
+            Console.WriteLine("\tL: Liste d'instances");
 
             Console.WriteLine("\n\tESC pour quitter");
             Console.Write("\n\tVotre choix :");
@@ -164,9 +180,9 @@ namespace AtelierOO_101
         /// <summary>
         /// Calcul du temps de remboursement d'après des param donnés
         /// </summary>
-        /// <param name="bal"></param>
-        /// <param name="inte"></param>
-        /// <param name="mens"></param>
+        /// <param name="bal">balance résiduelle du prêt</param>
+        /// <param name="inte">taux d'intérêt annuel</param>
+        /// <param name="mens">mensualités versées</param>
         static void CalculerRemboursement(double bal, double inte, double mens)
         {
             double residu = bal;
@@ -185,9 +201,6 @@ namespace AtelierOO_101
             }
             Console.WriteLine("Réglement du prêt en {0} mois", nbMois);
         }
-
-  
-
     }
 }
 

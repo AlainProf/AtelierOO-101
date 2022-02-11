@@ -4,6 +4,11 @@
         <name>AtelierOO-101</name>
     </assembly>
     <members>
+        <member name="T:AtelierOO_101.Adresse">
+            <summary>
+            Représente les informations d'adresse d'un lieu
+            </summary>
+        </member>
         <member name="P:AtelierOO_101.Adresse.NumCivic">
             <summary>
             Représente le numéro de porte d'un batiment
@@ -14,18 +19,99 @@
             Rue où est situé un batiment 
             </summary>
         </member>
+        <member name="P:AtelierOO_101.Adresse.Ville">
+            <summary>
+            Ville du lieu
+            </summary>
+        </member>
+        <member name="P:AtelierOO_101.Adresse.Province">
+            <summary>
+            Province du lieu en question
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Adresse.#ctor">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
         <member name="M:AtelierOO_101.Adresse.#ctor(System.String,System.String,System.String,System.String)">
             <summary>
-            
+            Constructeur paramétré avec les toutes info
             </summary>
             <param name="nc">pour initialiser NumCivic</param>
             <param name="r">pour initialiser Rue</param>
-            <param name="v"></param>
-            <param name="p"></param>
+            <param name="v">ville</param>
+            <param name="p">province</param>
+        </member>
+        <member name="M:AtelierOO_101.Adresse.Afficher">
+            <summary>
+            Affichage de tous les détails d'une adresse
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Adresse.Existe">
+            <summary>
+            Vérifie si l'adresse demandée est bien initialisé
+            </summary>
+            <returns>return true si c'est le cas et return false si l'adresse à été initialisée par des valeurs par défaut</returns>
         </member>
         <member name="M:AtelierOO_101.ExploHumain.ExplorationHumain">
             <summary>
-            Exploration des classes Humain et Adresse
+            Classe utilitaire visant l'exploration des classes Humain et Adresse
+            </summary>
+        </member>
+        <member name="T:AtelierOO_101.Humain">
+            <summary>
+            Classe générale représentant un humain
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Humain.#ctor">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Humain.#ctor(System.DateTime,System.String)">
+            <summary>
+            Constructeur paramétré pour un humain vivant dont on ne connaît la résidence
+            </summary>
+            <param name="na">date de naissance</param>
+            <param name="n">nom de l'humain, avec valeur par défaut si nécessaire</param>
+        </member>
+        <member name="M:AtelierOO_101.Humain.#ctor(System.DateTime,System.String,System.DateTime)">
+            <summary>
+            Constructeur pour un humain décédé
+            </summary>
+            <param name="na">date de naissance</param>
+            <param name="n">nom</param>
+            <param name="d">date de décès</param>
+        </member>
+        <member name="M:AtelierOO_101.Humain.#ctor(System.DateTime,System.String,AtelierOO_101.Adresse)">
+            <summary>
+            Constructeur pour un humain dont on connait la résidence
+            </summary>
+            <param name="na">date de naissance</param>
+            <param name="n">nom</param>
+            <param name="a">adresse de résidence</param>
+        </member>
+        <member name="M:AtelierOO_101.Humain.Age">
+            <summary>
+            Méthode qui calcule l'âge d'un humain, s'il est décédé on calcule l'age atteint au décès
+            </summary>
+            <returns>nombre d'années complètes</returns>
+        </member>
+        <member name="M:AtelierOO_101.Humain.Afficher">
+            <summary>
+            Affichage de tous les détails de l'humain
+            </summary>
+        </member>
+        <member name="M:AtelierOO_101.Humain.AnsDepuisDeces">
+            <summary>
+            Calcule le temps depuis le décès
+            </summary>
+            <returns>le nombre d'année complètes écoulées depuis le décès</returns>
+        </member>
+        <member name="M:AtelierOO_101.Humain.Mourir">
+            <summary>
+            Méthode appelée lors du décès d'un humain, fixe la date de décès à maintenant
             </summary>
         </member>
         <member name="T:AtelierOO_101.Program">
@@ -77,9 +163,9 @@
             <summary>
             Calcul du temps de remboursement d'après des param donnés
             </summary>
-            <param name="bal"></param>
-            <param name="inte"></param>
-            <param name="mens"></param>
+            <param name="bal">balance résiduelle du prêt</param>
+            <param name="inte">taux d'intérêt annuel</param>
+            <param name="mens">mensualités versées</param>
         </member>
     </members>
 </doc>

@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace AtelierOO_101
 {
+    /// <summary>
+    /// Classe générale représentant un humain
+    /// </summary>
     class Humain
     {
-        private string _nom;
-        private DateTime _naissance;
-        private DateTime _deces;
-        private Adresse _residence;
-
+        /// <summary>
+        /// Constructeur par défaut
+        /// </summary>
         public Humain()
         {
             _nom = "inconnu";
@@ -21,6 +22,16 @@ namespace AtelierOO_101
             _residence = new Adresse();
         }
 
+        public string GetNom()
+        {
+            return _nom;
+        }
+
+        /// <summary>
+        /// Constructeur paramétré pour un humain vivant dont on ne connaît la résidence
+        /// </summary>
+        /// <param name="na">date de naissance</param>
+        /// <param name="n">nom de l'humain, avec valeur par défaut si nécessaire</param>
         public Humain(DateTime na, string n = "incognito")
         {
             _nom = n;
@@ -28,6 +39,12 @@ namespace AtelierOO_101
             _deces = new DateTime(1, 1, 1);
             _residence = new Adresse();
         }
+        /// <summary>
+        /// Constructeur pour un humain décédé
+        /// </summary>
+        /// <param name="na">date de naissance</param>
+        /// <param name="n">nom</param>
+        /// <param name="d">date de décès</param>
         public Humain(DateTime na, string n, DateTime d)
         {
             _nom = n;
@@ -35,6 +52,12 @@ namespace AtelierOO_101
             _deces = d;
             _residence = new Adresse();
         }
+        /// <summary>
+        /// Constructeur pour un humain dont on connait la résidence
+        /// </summary>
+        /// <param name="na">date de naissance</param>
+        /// <param name="n">nom</param>
+        /// <param name="a">adresse de résidence</param>
         public Humain(DateTime na, string n, Adresse a)
         {
             _nom = n;
@@ -43,30 +66,37 @@ namespace AtelierOO_101
         }
 
 
-
-        private bool EstVivant()
-        {
-            return _deces.Ticks < 100000;
-        }
-
-        public long Age()
+       /// <summary>
+       /// Méthode qui calcule l'âge d'un humain, s'il est décédé on calcule l'age atteint au décès
+       /// </summary>
+       /// <returns>nombre d'années complètes</returns>
+       public long Age()
         {
             double delta;
             if (EstVivant())
+            {
                 delta = DateTime.Now.Ticks - _naissance.Ticks;
+            }
             else
+            {
                 delta = _deces.Ticks - _naissance.Ticks;
+            }
             
             return (long) (delta / 10000000 / (365.24 * 24 * 60 * 60));
         }
 
+        /// <summary>
+        /// Affichage de tous les détails de l'humain
+        /// </summary>
         public void Afficher()
         {
             Console.WriteLine("nom {0}\n né le {1}", _nom, _naissance);
             Console.WriteLine("agé de {0} ans", Age());
 
             if (!EstVivant())
+            {
                 Console.WriteLine("Décédé depuis {0} ans", AnsDepuisDeces());
+            }
 
             if (_residence.Existe())
             {
@@ -77,6 +107,10 @@ namespace AtelierOO_101
                 Console.WriteLine("SDF");
         }
 
+        /// <summary>
+        /// Calcule le temps depuis le décès
+        /// </summary>
+        /// <returns>le nombre d'année complètes écoulées depuis le décès</returns>
         public long AnsDepuisDeces()   
         {
             double delta = DateTime.Now.Ticks - _deces.Ticks;
@@ -84,11 +118,25 @@ namespace AtelierOO_101
         }
          
 
+        /// <summary>
+        /// Méthode appelée lors du décès d'un humain, fixe la date de décès à maintenant
+        /// </summary>
         public void Mourir()
         {
             _deces = DateTime.Now;
         }
 
+        private string _nom;
+        private DateTime _naissance;
+        private DateTime _deces;
+        private Adresse _residence;
+        //------------------------------------
+        //
+        //------------------------------------
+        private bool EstVivant()
+        {
+            return _deces.Ticks < 100000;
+        }
 
     }
 }
