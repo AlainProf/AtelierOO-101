@@ -8,7 +8,7 @@ namespace AtelierOO_101
 {
     class ExploSD
     {
-        public void ExploArray()
+        static public int ExploArray()
         {
             Console.Clear();
             Console.WriteLine("Les Array en C#");
@@ -32,9 +32,10 @@ namespace AtelierOO_101
                 cumul += n;
             }
             Console.WriteLine("Moyenne des notes: {0}", tabNotes.Average());
+            return 0;
        }
 
-       public void ArrayDInstances()
+       static public int ArrayDInstances()
         {
             Console.Clear();
             Humain[] classe101 = new Humain[4];
@@ -70,6 +71,7 @@ namespace AtelierOO_101
             {
                 h.Afficher();
             }
+            return 0;
         }
 
         public static int TriParVieux(Humain ha, Humain hb)
@@ -81,7 +83,7 @@ namespace AtelierOO_101
             return (int)(ha.Age() - hb.Age());
         }
 
-        public void ListeDInstances()
+        static public int ListeDInstances()
         {
             Console.Clear();
             List<Humain> Idoles = new();
@@ -113,6 +115,8 @@ namespace AtelierOO_101
             {
                 h.Afficher();
             }
+
+            return 0;
 
 
         }

@@ -125,17 +125,17 @@
             </summary>
             <param name="args"></param>
         </member>
-        <member name="M:AtelierOO_101.Program.Menu">
+        <member name="M:AtelierOO_101.Program.MenuOld">
             <summary>
             Menu pricipal de l'Atelier
             </summary>
         </member>
-        <member name="M:AtelierOO_101.Program.Options">
+        <member name="M:AtelierOO_101.Program.OptionsOld">
             <summary>
             Affcihage des diverses options offertes à l'utilisateur
             </summary>
         </member>
-        <member name="M:AtelierOO_101.Program.AfficherEntete">
+        <member name="M:AtelierOO_101.Program.AfficherEnteteOld">
             <summary>
             Affichage d'une entête formatée surper belle présentant le programme 
             </summary>

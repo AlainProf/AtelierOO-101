@@ -1,4 +1,7 @@
 ﻿using System;
+using AtelierOO_101.Classes;
+using AtelierOO_101.ClassesExplo;
+
 
 namespace AtelierOO_101
 {
@@ -13,18 +16,30 @@ namespace AtelierOO_101
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            Menu();
+            Menu menu = new Menu();
+            menu.Nom = "Atelier de la classe 2C6-101 POO";
+
+            MenuItem mi = new MenuItem("Manipulation de fichiers (R/W)", 'M', ExploManipFichier.ExplorationLectureEtEcritureDsFichier);
+            menu.AjouterItem(new MenuItem("calculer rendement", 'R', CalculerRendementErgo));
+
+            menu.AjouterItem(new MenuItem("remboursement prêt", 'P', CalculerRemboursementPret));
+            menu.AjouterItem(new MenuItem("Classes Humain et Adresse", 'C', ExploHumain.ExplorationHumain));
+            menu.AjouterItem(new MenuItem("Exploration des tableaux (array) en C#", 'T', ExploSD.ExploArray));
+            menu.AjouterItem(new MenuItem("Tableaux d'instances", 'I', ExploSD.ArrayDInstances));
+            menu.AjouterItem(new MenuItem("Liste d'instances", 'L', ExploSD.ListeDInstances));
+
+            menu.Afficher();
         }
 
 
         /// <summary>
         /// Menu pricipal de l'Atelier
         /// </summary>
-        static void Menu()
+        static void MenuOld()
         {
             ConsoleKeyInfo touche;
             ExploSD exSD = new();
-            Options();
+            OptionsOld();
             while ((touche = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
                 switch ( (char)touche.Key)
@@ -44,19 +59,19 @@ namespace AtelierOO_101
                         Console.ReadKey(false);
                         break;
                     case 'A':
-                        exSD.ExploArray();
+                        ExploSD.ExploArray();
                         Console.ReadKey(false);
                         break;
                     case 'I':
-                        exSD.ArrayDInstances();
+                        ExploSD.ArrayDInstances();
                         Console.ReadKey(false);
                         break;
                     case 'L':
-                        exSD.ListeDInstances();
+                        ExploSD.ListeDInstances();
                         Console.ReadKey(false);
                         break;
                 }
-                Options();
+                OptionsOld();
             }
         }
 
@@ -64,9 +79,9 @@ namespace AtelierOO_101
         /// <summary>
         /// Affcihage des diverses options offertes à l'utilisateur
         /// </summary>
-        static void Options()
+        static void OptionsOld()
         {
-            AfficherEntete();
+            AfficherEnteteOld();
             Console.WriteLine("\tR: calculer rendement");
             Console.WriteLine("\tE: remboursement prêt");
             Console.WriteLine("\tH: Classes Humain et Adresse");
@@ -81,7 +96,7 @@ namespace AtelierOO_101
         /// <summary>
         /// Affichage d'une entête formatée surper belle présentant le programme 
         /// </summary>
-        static void AfficherEntete()
+        static void AfficherEnteteOld()
         {
             string entete = "Atelier du cours 2C6 POO";
             Console.Clear();
@@ -101,7 +116,7 @@ namespace AtelierOO_101
         /// <summary>
         /// Calcul du rendement d'un dépôt à terme
         /// </summary>
-       static void CalculerRendementErgo()
+       static int CalculerRendementErgo()
         {
             SaisirParamRendement(out double depot, out double tauxInt, out int duree, out string compo);
             double rendementCumul = depot;
@@ -127,6 +142,7 @@ namespace AtelierOO_101
                 Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul.ToString(".00"));
             }
             Console.WriteLine("A terme mon dépot vaut: {0}", rendementCumul.ToString(".00"));
+            return 0;
         }
 
         /// <summary>
@@ -161,7 +177,7 @@ namespace AtelierOO_101
         /// <summary>
         /// Calcul du temps nécessaire pour rembourser un prêt avec sasie des param par l'utilisateur
         /// </summary>
-        static void CalculerRemboursementPret()
+        static int CalculerRemboursementPret()
         {
             //string strPaiementMinimum;
             string strInteret;
@@ -175,6 +191,8 @@ namespace AtelierOO_101
             Console.WriteLine("remboursement mensuel:");
             strPaiementMensuel = Console.ReadLine();
             CalculerRemboursement(Convert.ToDouble(strBalance), Convert.ToDouble(strInteret), Convert.ToDouble(strPaiementMensuel));
+
+            return 0;
         }
 
         /// <summary>
