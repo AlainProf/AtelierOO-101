@@ -27,6 +27,11 @@ namespace AtelierOO_101
             return _nom;
         }
 
+        public DateTime GetNaissance()
+        {
+            return _naissance;
+        }
+
         /// <summary>
         /// Constructeur paramétré pour un humain vivant dont on ne connaît la résidence
         /// </summary>

@@ -48,7 +48,23 @@ namespace AtelierOO_101.Classes
             {
                 Console.WriteLine("Aucun item dans le menu");
             }
+        }
+        public void SaisirOption()
+        {
+            ConsoleKeyInfo keyInfo;
 
+            while((keyInfo = Console.ReadKey()).Key != ConsoleKey.Escape)
+            {
+                foreach(MenuItem mi in ListeItems)
+                {
+                    if ((char)keyInfo.Key == mi.Touche)
+                    {
+                        mi.Action();
+                        Console.ReadKey();
+                        Afficher();
+                    }
+                }
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ namespace AtelierOO_101
             Menu menu = new Menu();
             menu.Nom = "Atelier de la classe 2C6-101 POO";
 
-            MenuItem mi = new MenuItem("Manipulation de fichiers (R/W)", 'M', ExploManipFichier.ExplorationLectureEtEcritureDsFichier);
+            menu.AjouterItem(new MenuItem("Manipulation de fichiers (R/W)", 'M', ExploManipFichier.ExplorationLectureEtEcritureDsFichier)); 
             menu.AjouterItem(new MenuItem("calculer rendement", 'R', CalculerRendementErgo));
 
             menu.AjouterItem(new MenuItem("remboursement prêt", 'P', CalculerRemboursementPret));
@@ -29,6 +29,7 @@ namespace AtelierOO_101
             menu.AjouterItem(new MenuItem("Liste d'instances", 'L', ExploSD.ListeDInstances));
 
             menu.Afficher();
+            menu.SaisirOption();
         }
 
 
@@ -179,6 +180,7 @@ namespace AtelierOO_101
         /// </summary>
         static int CalculerRemboursementPret()
         {
+            Console.Clear();
             //string strPaiementMinimum;
             string strInteret;
             string strPaiementMensuel;
@@ -203,18 +205,24 @@ namespace AtelierOO_101
         /// <param name="mens">mensualités versées</param>
         static void CalculerRemboursement(double bal, double inte, double mens)
         {
+            Console.Clear();
             double residu = bal;
             Console.WriteLine("Credit de {0} à {1}% avec mensualité de {2} ", residu, inte * 100, mens);
             int nbMois = 0;
             double interetCumul = 0;
+
+            Console.WriteLine("Mois |  Interet mens |  K mens | Balance | Intérêt Cum");
+
             while (residu > 0)
             {
-                Console.Write("Mois {0}, intéret: {1} Capital: {2} ", nbMois + 1,
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}", nbMois + 1,
                                                         (residu * inte / 12).ToString(".00"),
-                                                        (mens - (residu * inte / 12)).ToString(".00"));
+                                                        (mens - (residu * inte / 12)).ToString(".00"),
+                                                        residu.ToString(".00"),
+                                                        interetCumul.ToString(".00"));
                 residu -= mens - ((residu * inte) / 12);
                 interetCumul += (residu * inte) / 12;
-                Console.WriteLine(" balance à payer : {0}. Intérêt cumulé: {1}", residu.ToString(".00"), interetCumul.ToString(".00"));
+                //Console.WriteLine(" balance à payer : {0}. Intérêt cumulé: {1}", residu.ToString(".00"), interetCumul.ToString(".00"));
                 nbMois++;
             }
             Console.WriteLine("Réglement du prêt en {0} mois", nbMois);
