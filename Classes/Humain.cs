@@ -93,7 +93,7 @@ namespace AtelierOO_101
         /// <summary>
         /// Affichage de tous les détails de l'humain
         /// </summary>
-        public void Afficher()
+        public virtual void Afficher()
         {
             Console.WriteLine("nom {0}\n né le {1}", _nom, _naissance);
             Console.WriteLine("agé de {0} ans", Age());
@@ -110,6 +110,7 @@ namespace AtelierOO_101
             }
             else
                 Console.WriteLine("SDF");
+            Console.WriteLine("-------------\n");
         }
 
         /// <summary>
@@ -131,10 +132,10 @@ namespace AtelierOO_101
             _deces = DateTime.Now;
         }
 
-        private string _nom;
-        private DateTime _naissance;
-        private DateTime _deces;
-        private Adresse _residence;
+        protected string _nom;
+        protected DateTime _naissance;
+        protected DateTime _deces;
+        protected Adresse _residence;
         //------------------------------------
         //
         //------------------------------------

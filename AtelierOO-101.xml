@@ -4,6 +4,11 @@
         <name>AtelierOO-101</name>
     </assembly>
     <members>
+        <member name="M:AtelierOO_101.ExploHumain.ExplorationHumain">
+            <summary>
+            Classe utilitaire visant l'exploration des classes Humain et Adresse
+            </summary>
+        </member>
         <member name="T:AtelierOO_101.Adresse">
             <summary>
             Représente les informations d'adresse d'un lieu
@@ -53,11 +58,6 @@
             Vérifie si l'adresse demandée est bien initialisé
             </summary>
             <returns>return true si c'est le cas et return false si l'adresse à été initialisée par des valeurs par défaut</returns>
-        </member>
-        <member name="M:AtelierOO_101.ExploHumain.ExplorationHumain">
-            <summary>
-            Classe utilitaire visant l'exploration des classes Humain et Adresse
-            </summary>
         </member>
         <member name="T:AtelierOO_101.Humain">
             <summary>
@@ -124,21 +124,6 @@
             Point d'entrée pour toutes les expérimentation fait dans le cours 2C6 POO
             </summary>
             <param name="args"></param>
-        </member>
-        <member name="M:AtelierOO_101.Program.MenuOld">
-            <summary>
-            Menu pricipal de l'Atelier
-            </summary>
-        </member>
-        <member name="M:AtelierOO_101.Program.OptionsOld">
-            <summary>
-            Affcihage des diverses options offertes à l'utilisateur
-            </summary>
-        </member>
-        <member name="M:AtelierOO_101.Program.AfficherEnteteOld">
-            <summary>
-            Affichage d'une entête formatée surper belle présentant le programme 
-            </summary>
         </member>
         <member name="M:AtelierOO_101.Program.CalculerRendementErgo">
             <summary>

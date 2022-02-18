@@ -53,7 +53,7 @@ namespace AtelierOO_101.Classes
         {
             ConsoleKeyInfo keyInfo;
 
-            while((keyInfo = Console.ReadKey()).Key != ConsoleKey.Escape)
+            while((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
                 foreach(MenuItem mi in ListeItems)
                 {

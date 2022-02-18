@@ -19,7 +19,8 @@ namespace AtelierOO_101
             Menu menu = new Menu();
             menu.Nom = "Atelier de la classe 2C6-101 POO";
 
-            menu.AjouterItem(new MenuItem("Manipulation de fichiers (R/W)", 'M', ExploManipFichier.ExplorationLectureEtEcritureDsFichier)); 
+            menu.AjouterItem(new MenuItem("Intro à l'héritage (POO)", 'H', ExploHeritage.Introduction));
+            menu.AjouterItem(new MenuItem("Manipulation de fichiers (R/W)", 'M', ExploManipFichier.ExplorationLectureEtEcritureDsFichier));
             menu.AjouterItem(new MenuItem("calculer rendement", 'R', CalculerRendementErgo));
 
             menu.AjouterItem(new MenuItem("remboursement prêt", 'P', CalculerRemboursementPret));
@@ -33,87 +34,81 @@ namespace AtelierOO_101
         }
 
 
-        /// <summary>
-        /// Menu pricipal de l'Atelier
-        /// </summary>
-        static void MenuOld()
-        {
-            ConsoleKeyInfo touche;
-            ExploSD exSD = new();
-            OptionsOld();
-            while ((touche = Console.ReadKey(true)).Key != ConsoleKey.Escape)
-            {
-                switch ( (char)touche.Key)
-                {
-                    case 'R':
-                        Console.ReadKey(false);
-                        CalculerRendementErgo();
-                        Console.ReadKey(false);
-                        break;
-                    case 'E':
-                        Console.ReadKey(false);
-                        CalculerRemboursementPret();
-                        Console.ReadKey(false);
-                        break;
-                    case 'H':
-                        ExploHumain.ExplorationHumain();
-                        Console.ReadKey(false);
-                        break;
-                    case 'A':
-                        ExploSD.ExploArray();
-                        Console.ReadKey(false);
-                        break;
-                    case 'I':
-                        ExploSD.ArrayDInstances();
-                        Console.ReadKey(false);
-                        break;
-                    case 'L':
-                        ExploSD.ListeDInstances();
-                        Console.ReadKey(false);
-                        break;
-                }
-                OptionsOld();
-            }
-        }
+       
+        //static void MenuOld()
+        //{
+        //    ConsoleKeyInfo touche;
+        //    ExploSD exSD = new();
+        //    OptionsOld();
+        //    while ((touche = Console.ReadKey(true)).Key != ConsoleKey.Escape)
+        //    {
+        //        switch ( (char)touche.Key)
+        //        {
+        //            case 'R':
+        //                Console.ReadKey(false);
+        //                CalculerRendementErgo();
+        //                Console.ReadKey(false);
+        //                break;
+        //            case 'E':
+        //                Console.ReadKey(false);
+        //                CalculerRemboursementPret();
+        //                Console.ReadKey(false);
+        //                break;
+        //            case 'H':
+        //                ExploHumain.ExplorationHumain();
+        //                Console.ReadKey(false);
+        //                break;
+        //            case 'A':
+        //                ExploSD.ExploArray();
+        //                Console.ReadKey(false);
+        //                break;
+        //            case 'I':
+        //                ExploSD.ArrayDInstances();
+        //                Console.ReadKey(false);
+        //                break;
+        //            case 'L':
+        //                ExploSD.ListeDInstances();
+        //                Console.ReadKey(false);
+        //                break;
+        //        }
+        //        OptionsOld();
+        //    }
+        //}
 
 
-        /// <summary>
-        /// Affcihage des diverses options offertes à l'utilisateur
-        /// </summary>
-        static void OptionsOld()
-        {
-            AfficherEnteteOld();
-            Console.WriteLine("\tR: calculer rendement");
-            Console.WriteLine("\tE: remboursement prêt");
-            Console.WriteLine("\tH: Classes Humain et Adresse");
-            Console.WriteLine("\tA: Exploration des tableaux (array) en C#");
-            Console.WriteLine("\tI: Tableaux d'instances");
-            Console.WriteLine("\tL: Liste d'instances");
+       
+        //static void OptionsOld()
+        //{
+        //    AfficherEnteteOld();
+        //    Console.WriteLine("\tR: calculer rendement");
+        //    Console.WriteLine("\tE: remboursement prêt");
+        //    Console.WriteLine("\tH: Classes Humain et Adresse");
+        //    Console.WriteLine("\tA: Exploration des tableaux (array) en C#");
+        //    Console.WriteLine("\tI: Tableaux d'instances");
+        //    Console.WriteLine("\tL: Liste d'instances");
 
-            Console.WriteLine("\n\tESC pour quitter");
-            Console.Write("\n\tVotre choix :");
-        }
+        //    Console.WriteLine("\n\tESC pour quitter");
+        //    Console.Write("\n\tVotre choix :");
+        //}
 
-        /// <summary>
-        /// Affichage d'une entête formatée surper belle présentant le programme 
-        /// </summary>
-        static void AfficherEnteteOld()
-        {
-            string entete = "Atelier du cours 2C6 POO";
-            Console.Clear();
-            for (int i = 0; i < entete.Length; i++)
-            {
-                Console.Write("-");
-            }
+      
+        //static void AfficherEnteteOld()
+        //{
+        //    string entete = "Atelier du cours 2C6 POO";
+        //    Console.Clear();
+        //    for (int i = 0; i < entete.Length; i++)
+        //    {
+        //        Console.Write("-");
+        //    }
 
-            Console.WriteLine("\n" + entete);
+        //    Console.WriteLine("\n" + entete);
 
-            for (int i = 0; i < entete.Length; i++)
-            {
-                Console.Write("-");
-            }
-            Console.WriteLine(); ;
-        }
+        //    for (int i = 0; i < entete.Length; i++)
+        //    {
+        //        Console.Write("-");
+        //    }
+        //    Console.WriteLine(); ;
+        //}
         /// <summary>
         /// Calcul du rendement d'un dépôt à terme
         /// </summary>
