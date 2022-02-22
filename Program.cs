@@ -19,6 +19,10 @@ namespace AtelierOO_101
             Menu menu = new Menu();
             menu.Nom = "Atelier de la classe 2C6-101 POO";
 
+            menu.AjouterItem(new MenuItem("Couleurs de la console", 'O', ExploCouleur.Epilepsie));
+            menu.AjouterItem(new MenuItem("Nuits étoilées", 'N', ExploCouleur.NuitEtoilee));
+            Paquet paq = new Paquet();
+            menu.AjouterItem(new MenuItem("Poker", 'K', paq.Afficher));
             menu.AjouterItem(new MenuItem("Intro à l'héritage (POO)", 'H', ExploHeritage.Introduction));
             menu.AjouterItem(new MenuItem("Manipulation de fichiers (R/W)", 'M', ExploManipFichier.ExplorationLectureEtEcritureDsFichier));
             menu.AjouterItem(new MenuItem("calculer rendement", 'R', CalculerRendementErgo));
