@@ -12,15 +12,44 @@ namespace AtelierOO_101.Classes
         int _sorte;
         string _valTexte;
 
+        private const int _largeurCarte = 4;
+
+        public Carte()
+        {
+            _valeur = 0;
+            _sorte = 0;
+        }
+
         public Carte(int s, int v)
         {
             _valeur = v;
             _sorte = s;
         }
 
-        public void Afficher()
+        public int Afficher(int decalageX, int decalageY)
         {
-            switch(_valeur)
+            SetValeurTexte();
+            SetCouleurCarte();
+
+            int xCarte = (decalageX * _largeurCarte) + decalageX;
+            int yCarte = (decalageY * 4);
+
+            Console.SetCursorPosition(xCarte, yCarte);
+            Console.Write(_valTexte + "   ");
+            Console.SetCursorPosition(xCarte, yCarte + 1);
+            Console.Write("    ");
+            Console.SetCursorPosition(xCarte, yCarte + 2);
+            Console.Write("   " + _valTexte);
+
+            //Console.Clear();
+
+            return 0;
+        }
+
+
+        private void SetValeurTexte()
+        {
+            switch (_valeur)
             {
                 case 12:
                     _valTexte = "A";
@@ -62,8 +91,11 @@ namespace AtelierOO_101.Classes
                     _valTexte = "2";
                     break;
             }
+        }
 
-            switch(_sorte)
+        private void SetCouleurCarte()
+        {
+            switch (_sorte)
             {
                 case 0:
                     Console.BackgroundColor = ConsoleColor.Black;
@@ -82,8 +114,7 @@ namespace AtelierOO_101.Classes
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     break;
             }
-
-            Console.Write(_valTexte);
         }
+
     }
 }

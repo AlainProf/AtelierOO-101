@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AtelierOO_101.Classes
+{
+    class JeuPoker
+    {
+        private static int _couleurTapis = 2; // 2 == vert
+        private static int _couleurTexte = 15; // 15 == blanc
+
+        public static readonly int NB_CARTES_PAR_MAIN = 5;
+        public static readonly int NB_JOUEURS = 4;
+
+        private Paquet lePaquet = new Paquet();
+
+        private MainPoker[] MainsDesJoueurs = new MainPoker[NB_JOUEURS];
+
+        public JeuPoker()
+        {
+            
+            for (int i = 0; i < NB_JOUEURS; i++)
+            {
+                MainsDesJoueurs[i] = new MainPoker();
+            }
+        }
+
+        public int Jouer()
+        {
+            CouleurTapis();
+            Console.Clear();
+            lePaquet.Brasser();
+
+            for (int i = 0; i < NB_CARTES_PAR_MAIN * NB_JOUEURS;  i++)
+            {
+                Carte c = lePaquet.Distribuer();
+                int indice = i / NB_CARTES_PAR_MAIN;
+                MainsDesJoueurs[i % NB_JOUEURS].AjouterCarte(indice, c);
+            }
+
+            for (int i = 0; i < NB_JOUEURS; i++)
+            {
+                MainsDesJoueurs[i].Afficher(i);
+            }
+            return 0;
+        }
+
+        public static void CouleurTapis()
+        {
+            Console.BackgroundColor = (ConsoleColor)_couleurTapis;
+            Console.ForegroundColor = (ConsoleColor)_couleurTexte;
+        }
+
+        public int AfficherLePaquet()
+        {
+             //lePaquet.Brasser();
+             lePaquet.Afficher();
+             Console.ReadLine();
+            return 0;
+        }
+
+    }
+}
