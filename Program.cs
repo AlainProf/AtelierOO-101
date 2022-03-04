@@ -10,33 +10,69 @@ namespace AtelierOO_101
     /// </summary>
     class Program
     {
+        static int _back = 15;
+        static int _fore = 0;
+        static int _nbJoueurs=3;
+
         /// <summary>
         /// Point d'entrée pour toutes les expérimentation fait dans le cours 2C6 POO
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            Menu menu = new Menu();
-            menu.Nom = "Atelier de la classe 2C6-101 POO";
+            try
+            {
+                if (args.Length > 2)
+                {
+                    for (int i = 0; i < args.Length; i++)
+                    {
+                        Console.WriteLine("args[{0}]: {1}", i, args[i]);
+                    }
 
-            menu.AjouterItem(new MenuItem("Couleurs de la console", 'O', ExploCouleur.Epilepsie));
-            menu.AjouterItem(new MenuItem("Nuits étoilées", 'N', ExploCouleur.NuitEtoilee));
-            /*Carte carte = new Carte(3, 10);
-            menu.AjouterItem(new MenuItem("Une Carte design", 'C', carte.Afficher));*/
-            JeuPoker leJeu = new JeuPoker();
-            menu.AjouterItem(new MenuItem("Un paquet brassé", 'B', leJeu.Jouer));
-            /* menu.AjouterItem(new MenuItem("Intro à l'héritage (POO)", 'H', ExploHeritage.Introduction));
-             menu.AjouterItem(new MenuItem("Manipulation de fichiers (R/W)", 'M', ExploManipFichier.ExplorationLectureEtEcritureDsFichier));
-             menu.AjouterItem(new MenuItem("calculer rendement", 'R', CalculerRendementErgo));
+                    _back = Convert.ToInt32(args[0]);
+                    _fore = Convert.ToInt32(args[1]);
+                    _nbJoueurs = Convert.ToInt32(args[2]);
+                }
+                else
+                {
+                    Console.WriteLine("Aucun argument");
+                }
+                Console.BackgroundColor = (ConsoleColor)_back;
+                Console.ForegroundColor = (ConsoleColor)_fore;
+                Console.Clear();
 
-             menu.AjouterItem(new MenuItem("remboursement prêt", 'P', CalculerRemboursementPret));
-             menu.AjouterItem(new MenuItem("Classes Humain et Adresse", 'C', ExploHumain.ExplorationHumain));
-             menu.AjouterItem(new MenuItem("Exploration des tableaux (array) en C#", 'T', ExploSD.ExploArray));
-             menu.AjouterItem(new MenuItem("Tableaux d'instances", 'I', ExploSD.ArrayDInstances));
-             menu.AjouterItem(new MenuItem("Liste d'instances", 'L', ExploSD.ListeDInstances));*/
 
-            menu.Afficher();
-            menu.SaisirOption();
+                Menu menu = new Menu();
+                menu.Nom = "Atelier de la classe 2C6-101 POO";
+
+                menu.AjouterItem(new MenuItem("Couleurs de la console", 'O', ExploCouleur.Epilepsie));
+                menu.AjouterItem(new MenuItem("Nuits étoilées", 'N', ExploCouleur.NuitEtoilee));
+                menu.AjouterItem(new MenuItem("Stacks et Queue", 'S', ExploQueuEtStack.JouerAvecStackEtQueue));
+                /*Carte carte = new Carte(3, 10);
+                menu.AjouterItem(new MenuItem("Une Carte design", 'C', carte.Afficher));*/
+                JeuPoker leJeu = new JeuPoker(_nbJoueurs);
+                menu.AjouterItem(new MenuItem("Un paquet brassé", 'B', leJeu.Jouer));
+                /* menu.AjouterItem(new MenuItem("Intro à l'héritage (POO)", 'H', ExploHeritage.Introduction));
+                 menu.AjouterItem(new MenuItem("Manipulation de fichiers (R/W)", 'M', ExploManipFichier.ExplorationLectureEtEcritureDsFichier));
+                 menu.AjouterItem(new MenuItem("calculer rendement", 'R', CalculerRendementErgo));
+
+                 menu.AjouterItem(new MenuItem("remboursement prêt", 'P', CalculerRemboursementPret));
+                 menu.AjouterItem(new MenuItem("Classes Humain et Adresse", 'C', ExploHumain.ExplorationHumain));
+                 menu.AjouterItem(new MenuItem("Exploration des tableaux (array) en C#", 'T', ExploSD.ExploArray));
+                 menu.AjouterItem(new MenuItem("Tableaux d'instances", 'I', ExploSD.ArrayDInstances));
+                 menu.AjouterItem(new MenuItem("Liste d'instances", 'L', ExploSD.ListeDInstances));*/
+
+                menu.Afficher();
+                menu.SaisirOption();
+            }
+            //catch(Exception e)
+            //{
+            //    Console.WriteLine("Quelque chose s'est mal produit: ({0})", e.Message);
+            //}
+            finally
+            {
+                Console.WriteLine("Finalement");
+            }
         }
 
 

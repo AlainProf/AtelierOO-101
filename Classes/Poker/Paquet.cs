@@ -9,10 +9,11 @@ namespace AtelierOO_101.Classes
     class Paquet
     {
         public Carte[] lesCartes = new Carte[52];
-        private int _curseur = 0;
+        private int _curseur;
 
         public Paquet()
         {
+            _curseur = 0;
             int iter = 0;
             for (int i = 0; i < 4;  i++)
             {
@@ -39,6 +40,8 @@ namespace AtelierOO_101.Classes
         public void Brasser()
         {
             Random alea = new();
+            _curseur = 0;
+
 
             for (int i = 52-1; i > 1; i--)
             {
@@ -53,6 +56,9 @@ namespace AtelierOO_101.Classes
         }
         public Carte Distribuer()
         {
+
+            if (_curseur > 51)
+                throw (new Exception("Impossible de distribuer la 53 ième carte"));
             return lesCartes[_curseur++];
         }
        

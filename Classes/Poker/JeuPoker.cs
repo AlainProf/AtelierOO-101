@@ -11,16 +11,18 @@ namespace AtelierOO_101.Classes
         private static int _couleurTapis = 2; // 2 == vert
         private static int _couleurTexte = 15; // 15 == blanc
 
-        public static readonly int NB_CARTES_PAR_MAIN = 5;
-        public static readonly int NB_JOUEURS = 4;
+        public const int NB_CARTES_PAR_MAIN = 6;
+        public static int NB_JOUEURS;
 
         private Paquet lePaquet = new Paquet();
 
-        private MainPoker[] MainsDesJoueurs = new MainPoker[NB_JOUEURS];
+        private MainPoker[] MainsDesJoueurs;
 
-        public JeuPoker()
+        public JeuPoker(int nbJ)
         {
-            
+            NB_JOUEURS = nbJ;
+
+            MainsDesJoueurs = new MainPoker[NB_JOUEURS];
             for (int i = 0; i < NB_JOUEURS; i++)
             {
                 MainsDesJoueurs[i] = new MainPoker();
@@ -36,7 +38,7 @@ namespace AtelierOO_101.Classes
             for (int i = 0; i < NB_CARTES_PAR_MAIN * NB_JOUEURS;  i++)
             {
                 Carte c = lePaquet.Distribuer();
-                int indice = i / NB_CARTES_PAR_MAIN;
+                int indice = i / NB_JOUEURS;
                 MainsDesJoueurs[i % NB_JOUEURS].AjouterCarte(indice, c);
             }
 
@@ -60,6 +62,5 @@ namespace AtelierOO_101.Classes
              Console.ReadLine();
             return 0;
         }
-
     }
 }
