@@ -1,58 +1,97 @@
-﻿namespace AtelierOO_101
+﻿//-----------------------------------------
+//  Nom: Program.cs
+//  Auteur : Alain Martel
+//  Date : 2025-01-27
+//  Description: 
+//-----------------------------------------
+
+namespace AtelierOO_101
 {
     internal class Program
     {
+        static Util u = new Util();
+        //------------------------------------------
+        //
+        //------------------------------------------
         static void Main(string[] args)
         {
-            Util.Titre("Atelier de dev de proj OO pour le groupe 2C6-101!");
-            AfficherMenu();
-            ExecuterChoix();
+            bool rester = true;
+            while (rester)
+            {
+                u.Titre("Atelier du cours POO- gr 1");
+                AfficherMenu();
+                ExecuterChoix(ref rester);
+            }
+            Console.WriteLine("\n\tAu revoir :o( ...");
+        }
+        //------------------------------------------
+        //
+        //------------------------------------------
+        static void AfficherMenu()
+        {
+            Console.WriteLine("F: outils Financiers ");
+            Console.WriteLine("H: Humanité");
+            Console.WriteLine("T: Exploration des tableaux C#");
+            Console.WriteLine("Q: Quitter");
+
+            Console.Write("\nVotre choix:");
         }
 
 
-        static void ExecuterChoix()
+        //------------------------------------------
+        //
+        //------------------------------------------
+        static void ExecuterChoix(ref bool rester)
         {
-            char choix = Util.SaisirChar();
+            char choix = u.SaisirChar();
 
             switch(choix.ToString().ToLower())
             {
-                case("f") : ExecFinancier();
-                      break;
-                case( "h" ): ExecHumanite();
+                case ("t"):
+                    Exploration explo = new Exploration();
+                    explo.ExploTableau();
+                    break;
+                case ("f"):
+                    ExecFinancier();
+                    break;
+                case ( "h" ): ExecHumanite();
                       break;
                 case( "q") :
-                     Console.WriteLine("Développer le exit()");
-                     break;
                 default:
-                   Console.WriteLine("Option inexistante");
-            break;
+                    rester = false;
+                    break;
             }
         }
 
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         static void ExecHumanite()
         {
-            Util.Titre("Exploration des humains");
+            u.Titre("Exploration des humains");
             Humain h = new Humain();
             h.Afficher();
 
-            Humain h1 = new Humain("Adam", "-6000", "M");
-            Humain h2 = new Humain("Êve", "-5999", "F");
+            Humain h1 = new Humain("Adam", new DateTime(1964,7,23), "M");
+            Humain h2 = new Humain("Êve");
+            Humain h3 = new Humain("Louis", new DateTime(2004,9,6), "M");
 
             h1.Afficher();
             h2.Afficher();
+            h3.Afficher();
+            u.Pause();
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         static void ExecFinancier()
         {
             Financier fin = new Financier();
             fin.Exec();
         }
 
-        static void AfficherMenu()
-        {
-            Console.WriteLine("F: outils Financiers ");
-            Console.WriteLine("H: Humanité");
-            Console.WriteLine("Q: Quitter");
-        }
+
+
     }
 }
