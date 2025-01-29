@@ -90,5 +90,12 @@ namespace AtelierOO_101
             Console.WriteLine("\n\tAppuyez sur une touche...");
             Console.ReadKey(true);
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
+        public void Sep(string msg="")
+        {
+            Console.WriteLine($"----------{msg}----------");
+        }
     }
 }
