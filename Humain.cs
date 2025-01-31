@@ -15,36 +15,60 @@ namespace AtelierOO_101
 {
     internal class Humain
     {
-        private string _nom;
-        private DateTime _naissance;
-        private string _sexe;
+       // private string Nom;
+        public string Nom { get; set; }
+        public DateTime Naissance { get; set; }
+        public string Sexe {  get; set; } 
+        public Adresse Domicile { get; set; }
 
         //------------------------------------------
         //
         //------------------------------------------
         public Humain()
         {
-            _nom = "inconnu";
-            _naissance = new DateTime(1,1,1);
-            _sexe = "F";
+            Nom = "inconnu";
+            Naissance = new DateTime(1,1,1);
+            Sexe = "F";
+            Domicile = new Adresse();   
         }
         //------------------------------------------
         //
         //------------------------------------------
         public Humain(string n)
         {
-            _nom = n;
-            _naissance = DateTime.Now;
-            _sexe = "F";
+            Nom = n;
+            Naissance = DateTime.Now;
+            Sexe = "F";
+            Domicile = new Adresse();
+        }
+        //------------------------------------------
+        //
+        //------------------------------------------
+        public Humain(string n, DateTime nais)
+        {
+            Nom = n;
+            Naissance = nais;
+            Sexe = "F";
+            Domicile = new Adresse();
         }
         //------------------------------------------
         //
         //------------------------------------------
         public Humain(string n, DateTime nais, string s)
         {
-            _nom = n;
-            _naissance = nais;
-            _sexe = s;
+            Nom = n;
+            Naissance = nais;
+            Sexe = s;
+        }
+        //------------------------------------------
+        //
+        //------------------------------------------
+        public Humain(string n, DateTime nais, string s, Adresse dom)
+        {
+            Nom = n;
+            Naissance = nais;
+            Sexe = s;
+            Domicile = dom;
         }
 
         //------------------------------------------
@@ -52,7 +76,8 @@ namespace AtelierOO_101
         //------------------------------------------
         public void Afficher()
         {
-            Console.WriteLine($"{_nom}, {Age()} ans ");
+            Console.WriteLine($"{Nom}, {Age()} ans ");
+            Domicile.Afficher();    
         }
 
         //------------------------------------------
@@ -60,7 +85,7 @@ namespace AtelierOO_101
         //------------------------------------------
         public long Age()
         {
-            long debut = _naissance.Ticks;
+            long debut = Naissance.Ticks;
             long fin = DateTime.Now.Ticks;
             return (fin - debut) / (10000000 * (long)365.24 * 86400);
         }
@@ -70,7 +95,7 @@ namespace AtelierOO_101
         //------------------------------------------
         public static int ComparerNom(Humain a, Humain b)
         {
-            return a._nom.CompareTo(b._nom);
+            return a.Nom.CompareTo(b.Nom);
         }
 
         //------------------------------------------
@@ -78,9 +103,9 @@ namespace AtelierOO_101
         //------------------------------------------
         public static int ComparerAge(Humain a, Humain b)
         {
-            if (a._naissance.Ticks < b._naissance.Ticks)
+            if (a.Naissance.Ticks < b.Naissance.Ticks)
                 return 1;
-            if (a._naissance.Ticks > b._naissance.Ticks)
+            if (a.Naissance.Ticks > b.Naissance.Ticks)
                 return -1;
             return 0;
         }

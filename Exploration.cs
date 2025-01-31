@@ -15,14 +15,76 @@ namespace AtelierOO_101
     internal class Exploration
     {
         Util u = new ();
-        const int taille = 1000000;
+        const int taille = 10;
         int[] tabEntiers = new int[taille];
         Humain[] tabGr101 = new Humain[taille];
         Random r = new ();
 
-        //string[] tabNoms = new string[taille] {"Gabriel", "Guilaume", "Raphaël", "Louis", "Elias", "Félix", "Adam", "Olivier", "Donavan", "Derek" };
+        string[] tabNoms = new string[10] {"Gabriel", "Guilaume", "Raphaël", "Louis", "Elias", "Félix", "Adam", "Olivier", "Donavan", "Derek" };
 
         List<int> listeEntiers = new();
+        List<Humain> lstGr101 = new List<Humain>();
+
+        //------------------------------------------
+        //
+        //------------------------------------------
+        public void ExploListeH()
+        {
+            u.Titre("Liste des étudiants");
+
+            for (int i = 0; i < taille; i++)
+            {
+                Humain h = new Humain(tabNoms[r.Next(0,10)], new DateTime(r.Next(1964, 2008), r.Next(1, 13), r.Next(1, 29)));
+                Adresse adresse = new Adresse("1234", "rue Cartier", "Laval");
+                h.Domicile = adresse;    
+                lstGr101.Add(h);
+            }
+            u.Sep("Liste d'humains");
+            AfficherListeH();
+            u.Pause();
+            lstGr101.Sort(ComparerAgeLoc);
+            u.Sep("Liste triée");
+            AfficherListeH();
+            u.Pause();
+            lstGr101.Sort(ComparerNomLoc);
+            u.Sep("Liste triée");
+            AfficherListeH();
+            u.Pause();
+
+
+        }
+
+        //------------------------------------------
+        //
+        //------------------------------------------
+        private void AfficherListeH()
+        {
+
+            for (int i = 0; i < lstGr101.Count; i++)
+            {
+                lstGr101[i].Afficher();
+            }
+        }
+
+        //------------------------------------------
+        //
+        //------------------------------------------
+        private int ComparerAgeLoc(Humain a, Humain b)
+        {
+            if (a.Naissance > b.Naissance)
+            { return 1; }
+            if (a.Naissance < b.Naissance)
+            { return -1; }
+            return 0;
+        }
+
+        //------------------------------------------
+        //
+        //------------------------------------------
+        private int ComparerNomLoc(Humain a, Humain b)
+        {
+            return a.Nom.CompareTo(b.Nom);
+        }
 
         //------------------------------------------
         //
@@ -33,10 +95,10 @@ namespace AtelierOO_101
 
             for (int i = 0; i < taille; i++)
             {
-                listeEntiers.Add(r.Next(1,1001));
+                listeEntiers.Add(r.Next(1, 1001));
             }
             u.Sep("Liste d'entiers");
-           // AfficherListe();
+            // AfficherListe();
             u.Pause();
             listeEntiers.Sort();
             u.Sep("Liste triée");

@@ -33,11 +33,11 @@ namespace AtelierOO_101
             Console.WriteLine("H: Humanité");
             Console.WriteLine("T: Exploration des tableaux C#");
             Console.WriteLine("L: Exploration des listes C#");
+            Console.WriteLine("I: Exploration des Fichiers");
             Console.WriteLine("Q: Quitter");
 
             Console.Write("\nVotre choix:");
         }
-
 
         //------------------------------------------
         //
@@ -45,12 +45,16 @@ namespace AtelierOO_101
         static void ExecuterChoix(ref bool rester)
         {
             char choix = u.SaisirChar();
-            Exploration explo = new();
+            Exploration explo = new(); ;
+            ExploFichiers exploF = new();
 
             switch (choix.ToString().ToLower())
             {
+                case ("i"):
+                    exploF.ExecExploFichiers();
+                    break;
                 case ("l"):
-                    explo.ExploListe();
+                    explo.ExploListeH();
                     break;
                 case ("t"):
                     explo.ExploTableauH();
