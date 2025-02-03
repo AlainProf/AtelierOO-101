@@ -28,6 +28,36 @@ namespace AtelierOO_101
         //------------------------------------------
         //
         //------------------------------------------
+        public void ExploRefOut()
+        {
+            u.Titre("Exploration des param Out et Ref");
+
+            int p = 18;
+            fonction1(p);
+            u.Sep("Out 1 : " + p.ToString());
+            fonction2(ref p);
+            //fonction3(out int p2);
+
+        }
+
+        void fonction1(int p)
+        {
+            u.Sep("in fct 1 : " + p.ToString());
+            p = p * 2;
+        }
+        void fonction2(ref int p)
+        {
+            p = p * 2;
+        }
+        /*void fonction3(out int p)
+        {
+            p = p * 2;
+        }*/
+
+
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void ExploListeH()
         {
             u.Titre("Liste des étudiants");

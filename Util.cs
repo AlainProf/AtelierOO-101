@@ -42,7 +42,7 @@ namespace AtelierOO_101
         public char SaisirChar()
         {
             ConsoleKeyInfo cle;
-            cle = Console.ReadKey();
+            cle = Console.ReadKey(true);
             return cle.KeyChar;
         }
 

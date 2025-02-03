@@ -29,9 +29,12 @@ namespace AtelierOO_101
         //------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine("R: param ref et out");
+            Console.WriteLine("C: Couleur et Écran");
+            Console.WriteLine("T: TicTacToe");
             Console.WriteLine("F: outils Financiers ");
             Console.WriteLine("H: Humanité");
-            Console.WriteLine("T: Exploration des tableaux C#");
+            Console.WriteLine("A: Exploration des tableaux (array) C#");
             Console.WriteLine("L: Exploration des listes C#");
             Console.WriteLine("I: Exploration des Fichiers");
             Console.WriteLine("Q: Quitter");
@@ -50,13 +53,24 @@ namespace AtelierOO_101
 
             switch (choix.ToString().ToLower())
             {
+                case ("r"):
+                    explo.ExploRefOut();
+                    break;
+                case ("c"):
+                    ExploEcran exploEcran = new();
+                    exploEcran.Exec();
+                    break;
+                case ("t"):
+                    TicTacToe ttt = new();
+                    ttt.Jouer();
+                    break;
                 case ("i"):
                     exploF.ExecExploFichiers();
                     break;
                 case ("l"):
                     explo.ExploListeH();
                     break;
-                case ("t"):
+                case ("a"):
                     explo.ExploTableauH();
                     break;
                 case ("f"):
