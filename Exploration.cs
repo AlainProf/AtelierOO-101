@@ -34,25 +34,34 @@ namespace AtelierOO_101
 
             int p = 18;
             fonction1(p);
-            u.Sep("Out 1 : " + p.ToString());
+            u.Sep("Post f1 (par valeur) : " + p);
             fonction2(ref p);
-            //fonction3(out int p2);
+            u.Sep("Post f2 (par ref): " + p);
+
+
+            fonction3(out int p2);
+            u.Sep("Post f3 (par out) : " + p2);
+
+            u.Pause();
 
         }
 
         void fonction1(int p)
         {
-            u.Sep("in fct 1 : " + p.ToString());
+            u.Sep("in fct 1 : " + p);
             p = p * 2;
         }
         void fonction2(ref int p)
         {
-            p = p * 2;
+            u.Sep("in fct 2 : " + p);
+            p = p * 3;
         }
-        /*void fonction3(out int p)
+        void fonction3(out int p)
         {
-            p = p * 2;
-        }*/
+            p = 1;
+            u.Sep("in fct 3 : " + p);
+            p = p * 4;
+        }
 
 
         //------------------------------------------

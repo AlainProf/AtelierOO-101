@@ -5,6 +5,8 @@
 //  Description: 
 //-----------------------------------------
 
+using AtelierOO_101.TP1;
+
 namespace AtelierOO_101
 {
     internal class Program
@@ -29,6 +31,7 @@ namespace AtelierOO_101
         //------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine("P: Puissance 4");
             Console.WriteLine("R: param ref et out");
             Console.WriteLine("C: Couleur et Écran");
             Console.WriteLine("T: TicTacToe");
@@ -53,6 +56,10 @@ namespace AtelierOO_101
 
             switch (choix.ToString().ToLower())
             {
+                case ("p"):
+                    Puissance4 p4=new();
+                    p4.Jouer();
+                    break;
                 case ("r"):
                     explo.ExploRefOut();
                     break;

@@ -14,6 +14,8 @@ namespace AtelierOO_101
 {
     internal class Util
     {
+        public Random rdm = new();
+
         //------------------------------------------
         //
         //------------------------------------------
