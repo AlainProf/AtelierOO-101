@@ -20,7 +20,6 @@ namespace AtelierOO_101
         Humain[] tabGr101 = new Humain[taille];
         Random r = new ();
 
-        string[] tabNoms = new string[10] {"Gabriel", "Guilaume", "Raphaël", "Louis", "Elias", "Félix", "Adam", "Olivier", "Donavan", "Derek" };
 
         List<int> listeEntiers = new();
         List<Humain> lstGr101 = new List<Humain>();
@@ -46,16 +45,25 @@ namespace AtelierOO_101
 
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         void fonction1(int p)
         {
             u.Sep("in fct 1 : " + p);
             p = p * 2;
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         void fonction2(ref int p)
         {
             u.Sep("in fct 2 : " + p);
             p = p * 3;
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         void fonction3(out int p)
         {
             p = 1;
@@ -73,7 +81,7 @@ namespace AtelierOO_101
 
             for (int i = 0; i < taille; i++)
             {
-                Humain h = new Humain(tabNoms[r.Next(0,10)], new DateTime(r.Next(1964, 2008), r.Next(1, 13), r.Next(1, 29)));
+                Humain h = new Humain(u.tabNoms[r.Next(0,10)], new DateTime(r.Next(1964, 2008), r.Next(1, 13), r.Next(1, 29)));
                 Adresse adresse = new Adresse("1234", "rue Cartier", "Laval");
                 h.Domicile = adresse;    
                 lstGr101.Add(h);
@@ -219,6 +227,9 @@ namespace AtelierOO_101
 
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         private void AfficherTab()
         {
             for (int i = 0; i < tabEntiers.Length; i++)

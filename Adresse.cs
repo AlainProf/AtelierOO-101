@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------
+//  Nom: 
+//  Auteur : Alain Martel
+//  Date : 2025-0
+//  Description: 
+//-----------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,12 +17,20 @@ namespace AtelierOO_101
         public string NumCivique {  get; set; } 
         public string Rue {  get; set; }    
         public string Ville { get; set; }
+
+        //------------------------------------------
+        //
+        //------------------------------------------
+
         public Adresse()
         {
             NumCivique = "0";
             Rue = "Sans nom";
             Ville = "Fantôme";
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         public Adresse(string nc, string r, string v)
         {
             NumCivique = nc;
@@ -24,6 +38,9 @@ namespace AtelierOO_101
             Ville = v;
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void Afficher()
         {
             Console.WriteLine($"{NumCivique} {Rue}, {Ville}");  

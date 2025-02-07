@@ -72,7 +72,8 @@ namespace AtelierOO_101
                     ttt.Jouer();
                     break;
                 case ("i"):
-                    exploF.ExecExploFichiers();
+                    //exploF.ExecExploFichiers();
+                    exploF.EcrireXHumains(100000);  
                     break;
                 case ("l"):
                     explo.ExploListeH();

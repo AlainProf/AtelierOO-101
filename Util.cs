@@ -16,6 +16,11 @@ namespace AtelierOO_101
     {
         public Random rdm = new();
 
+        public readonly string[] tabNoms = new string[10] { "Gabriel", "Guilaume", "Raphaël", "Louis", "Elias", "Félix", "Adam", "Olivier", "Donavan", "Derek" };
+        public readonly string[] tabRues = new string[10] { "de l'Hotel", "du Parc", "Fournier", "Du palias", "2ième avenue", "boul labelle", "aut 15 nord", "sans issuee", "Donavan", "Boul arthur-sauvé" };
+        public readonly string[] tabVilles = new string[10] { "Singe et rhum", "montréal", "laval", "Québec", "Trois rivière", "Gatineua", "Ottawa", "Longueuil", "Sherbrooke", "Teerebonne" };
+
+
         //------------------------------------------
         //
         //------------------------------------------

@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------
+//  Nom: 
+//  Auteur : Alain Martel
+//  Date : 2025-0
+//  Description: 
+//-----------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +15,9 @@ namespace AtelierOO_101
     internal class ExploEcran
     {
         Util u = new();
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void Exec()
         {
             NoirEtBlanc();
@@ -37,6 +46,9 @@ namespace AtelierOO_101
             u.Pause();
             NoirEtBlanc();
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void Ciel()
         {
             int compteur = 0;
@@ -69,6 +81,9 @@ namespace AtelierOO_101
             }
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void Parcours()
         {
             int limiteX = (Console.WindowWidth - 1);  
@@ -122,6 +137,9 @@ namespace AtelierOO_101
             }
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void NoirEtBlanc()
         {
             Console.BackgroundColor = ConsoleColor.Black;

@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------
+//  Nom: 
+//  Auteur : Alain Martel
+//  Date : 2025-0
+//  Description: 
+//-----------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +19,9 @@ namespace AtelierOO_101
         bool _partieEnCours = true;
         char[] _cases = new char[9] { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void Jouer()
         {
             while (_partieEnCours)
@@ -33,6 +42,9 @@ namespace AtelierOO_101
         }
 
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         private bool CoupGagnant()
         {
             // Gagnant par une ligne
@@ -74,6 +86,9 @@ namespace AtelierOO_101
             }
             return false;
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         private void AfficherGrille()
         {
             u.Titre("Tic Tac Toe");
@@ -82,6 +97,9 @@ namespace AtelierOO_101
             Console.WriteLine(" " + _cases[6] + " | " + _cases[7] + " | " + _cases[8] + " ");
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         private void ProchainCoup()
         {
             Console.WriteLine($"\n\nAu joueur {_prochainJoueur} de jouer! Quelle case? (0 à 8)");
@@ -100,6 +118,9 @@ namespace AtelierOO_101
                 _prochainJoueur = 'x';
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         private bool CoupLegal(char coup)
         {
             if ( coup =='0' || coup == '1' || coup == '2' || coup == '3' || coup == '4' || coup == '5' || coup == '6' || coup == '7' || coup == '8')

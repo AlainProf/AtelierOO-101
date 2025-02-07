@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------
+//  Nom: 
+//  Auteur : Alain Martel
+//  Date : 2025-0
+//  Description: 
+//-----------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +12,14 @@ using System.Threading.Tasks;
 
 namespace AtelierOO_101
 {
-    internal class ExploFichiers
+    internal class ExploFichiers 
     {
         Util u = new Util();
+        List<Humain> gr101 = new List<Humain>();
+        Parseur psr = new Parseur();
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void ExecExploFichiers()
         {
             string FICHIER_POPULATION = @"d:\alino\atelier\pop.txt";
@@ -19,22 +30,27 @@ namespace AtelierOO_101
                 StreamReader reader = new StreamReader(FICHIER_POPULATION);
                 string ligneCourante;
                 int iter = 0;
-                while(reader.Peek() > -1)
+                while (reader.Peek() > -1)
                 {
                     iter++;
                     ligneCourante = reader.ReadLine();
 
-                    if (ParsingHumain(ligneCourante, out Humain h ))
+                    if (psr.ParsingHumain(ligneCourante, out Humain h, out string msgErr))
                     {
-                        h.Afficher();
+                        gr101.Add(h);
+                        // h.Afficher();
                     }
                     else
                     {
-                        Console.WriteLine($"Erreur à la ligne {iter}");
+                        Console.WriteLine($"Erreur à la ligne {iter}: {msgErr} ");
                     }
 
-                   // Console.WriteLine($"{iter}: {ligneCourante}");
+                    // Console.WriteLine($"{iter}: {ligneCourante}");
                 }
+                Console.WriteLine($"Chargement de {gr101.Count} humains");
+                gr101.Sort(Humain.ComparerAge);
+
+                EcrireFichier();
             }
             else
             {
@@ -43,36 +59,40 @@ namespace AtelierOO_101
             u.Pause();
         }
 
-        private bool ParsingHumain(string infoBrute, out Humain h)
+        //------------------------------------------
+        //
+        //------------------------------------------
+        private void EcrireFichier()
         {
-            h = new Humain();
+            Console.WriteLine("Écriture du fichier trié");
 
-            int nbChamps = CompterChamps(infoBrute);
-            if (nbChamps == 8)
+
+            StreamWriter sw = new StreamWriter(@"d:\alino\atelier\popTri3.txt", true);
+            sw.WriteLine("Groupe 101 trié par Age");
+
+            gr101.Sort(Humain.ComparerNom);
+
+            foreach (Humain h in gr101)
             {
-                string[] tabInfo = infoBrute.Split(';');
-                h = new Humain(tabInfo[0],
-                               new DateTime(int.Parse(tabInfo[1]), int.Parse(tabInfo[2]), int.Parse(tabInfo[3])),
-                               tabInfo[4],
-                               new Adresse(tabInfo[5], tabInfo[6], tabInfo[7]));
-                return true;
+                sw.WriteLine($"{h.Nom};{h.Naissance.Year};{h.Naissance.Month};{h.Naissance.Day};{h.Sexe};{h.Domicile.NumCivique};{h.Domicile.Rue};{h.Domicile.Ville}");
             }
-            return false;
+            sw.Close();
         }
 
-        private int CompterChamps(string info)
+        public void EcrireXHumains(int nbHumaGeneres= 1000)
         {
-            if (info.Length == 0)
-                return 0;
-
-            int nbChamps = 1;
-            foreach (char ch in info)
+            //List<Humain> grpAlea = new List<Humain>();
+            for (int i = 0; i < nbHumaGeneres; i++)
             {
-                if (ch == ';')
-                    nbChamps++;
+                Humain h = Humain.HumainAleatoire();    
+                gr101.Add(h);  
             }
-            return nbChamps;
-        }
 
+            EcrireFichier();
+
+
+        }
     }
+
+
 }
