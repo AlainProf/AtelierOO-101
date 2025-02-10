@@ -12,6 +12,14 @@ using System.Threading.Tasks;
 
 namespace AtelierOO_101
 {
+    enum CODE_ERREUR
+    {
+        NomTropLong = 100,
+        NomTropCourt = 200,
+        TropVieux = 300,
+        Mineur =400
+    }
+
     internal class Parseur
     {
         //------------------------------------------
@@ -52,24 +60,24 @@ namespace AtelierOO_101
             errValidation = "";
             if (tabInfo[0].Length > 50)
             {
-                errValidation = "Nom trop long";
+                errValidation = (CODE_ERREUR.NomTropLong).ToString();
                 return false;
             }
             if (tabInfo[0].Length < 2)
             {
-                errValidation = "Nom trop court";
+                errValidation = (CODE_ERREUR.NomTropCourt).ToString();
                 return false;
             }
             if (int.TryParse(tabInfo[1], out int val))
             {
                 if (val < 1900)
                 {
-                    errValidation = " trop vieux";
+                    errValidation = (CODE_ERREUR.TropVieux).ToString();
                     return false;
                 }
                 if (val > 2007)
                 {
-                    errValidation = " mineur ";
+                    errValidation = (CODE_ERREUR.Mineur).ToString();
                     return false;
                 }
             }

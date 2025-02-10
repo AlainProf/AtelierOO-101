@@ -12,6 +12,16 @@ using System.Threading.Tasks;
 
 namespace AtelierOO_101
 {
+    enum JourSemaine
+    {
+        Lundi,
+        Mardi,
+        Mecredi,
+        Jeudi,
+        Vendredi,
+        Samedi,
+        Dimanche
+    }
     internal class Util
     {
         public Random rdm = new();

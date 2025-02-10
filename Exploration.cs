@@ -4,6 +4,7 @@
 //  Date : 2025-01-27
 //  Description: 
 //-----------------------------------------
+using AtelierOO_101.Poker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -236,6 +237,94 @@ namespace AtelierOO_101
             {
                 Console.WriteLine($"{i}: {tabEntiers[i]}");
             }
+        }
+
+        //------------------------------------------
+        //
+        //------------------------------------------
+        public void ExecEnum()
+        {
+            u.Titre("Énumération en C#");
+
+            var res = typeof(Humain);
+            u.Sep($"res = {res}");
+
+            JourSemaine aujh = JourSemaine.Lundi;
+            JourSemaine demain = (JourSemaine)1;
+
+            int ind = 5;
+            bool EstValide = Enum.IsDefined(typeof(JourSemaine), ind);
+
+            if (EstValide)
+            {
+                JourSemaine jx = (JourSemaine)ind;
+                u.Sep($"X est  {jx}");
+            }
+            else
+            {
+                u.Sep($"ind {ind} n'est pas un indice valide de JourSemaine");
+            }
+
+            u.Sep(aujh.ToString());
+            u.Sep($"Demain nous serons {demain}");
+
+       
+
+            Carte c1 = new Carte();
+            c1.Afficher();
+
+            Carte c2 = new Carte(3, 10);
+            c2.Afficher();
+            u.Pause();
+
+            Paquet paq = new Paquet();  
+            paq.Afficher();
+            u.Pause();
+
+            paq = new Paquet(true);
+            paq.Afficher();
+            u.Sep("Trié");
+            paq.Trier();
+            paq.Afficher();
+            u.Pause();
+
+        }
+
+        public void ExecException()
+        {
+            try
+            {
+                divParZ(0);
+                u.Sep("Post divParZ()");
+            }
+            catch (DivideByZeroException ex)
+            {
+                throw (new Exception("division par Zéro"));
+                //Console.WriteLine($"Une exception est survenue: division par Zéro");
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Une exception est survenue: {ex.Message}");
+            }
+            finally
+            {
+                u.Sep("Fin de execException()");
+                u.Pause();
+            }
+
+        }
+
+        private void divParZ(int den)
+        {
+            int va = 1000 / den;
+        }
+
+        public void ExecHeritage()
+        {
+            Etudiant e1 = new Etudiant();
+            e1.Afficher();
+            u.Pause();
         }
     }
 }

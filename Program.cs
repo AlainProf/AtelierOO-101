@@ -20,17 +20,38 @@ namespace AtelierOO_101
             bool rester = true;
             while (rester)
             {
-                u.Titre("Atelier du cours POO- gr 1");
-                AfficherMenu();
-                ExecuterChoix(ref rester);
+                try
+                {
+                    u.Titre("Atelier du cours POO- gr 1");
+                    AfficherMenu();
+                    ExecuterChoix(ref rester);
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write("Voulez-vous continuer? (o/n)");
+                    char dec = u.SaisirChar();
+
+                    if (dec!='o' && dec != 'O')
+                    {
+                        rester = false;
+                    }
+                }
+                finally
+                {
+                    Console.WriteLine("\n\tAu revoir :o( ...");
+                }
             }
-            Console.WriteLine("\n\tAu revoir :o( ...");
         }
         //------------------------------------------
         //
         //------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine("G: Héritage en C#");
+            Console.WriteLine("X: Exception en C#");
+            Console.WriteLine("E: Énumération (enum) en C#");
             Console.WriteLine("P: Puissance 4");
             Console.WriteLine("R: param ref et out");
             Console.WriteLine("C: Couleur et Écran");
@@ -56,8 +77,20 @@ namespace AtelierOO_101
 
             switch (choix.ToString().ToLower())
             {
+                case ("g"):
+                    explo.ExecHeritage();
+                    break;
+
+                case ("x"):
+                    explo.ExecException();
+                    break;
+
+                case ("e"):
+                    explo.ExecEnum();
+                    break;
+
                 case ("p"):
-                    Puissance4 p4=new();
+                    Puissance4 p4 = new();
                     p4.Jouer();
                     break;
                 case ("r"):
@@ -72,8 +105,8 @@ namespace AtelierOO_101
                     ttt.Jouer();
                     break;
                 case ("i"):
-                    //exploF.ExecExploFichiers();
-                    exploF.EcrireXHumains(100000);  
+                    exploF.ExecExploFichiers();
+                    //exploF.EcrireXHumains(100000);  
                     break;
                 case ("l"):
                     explo.ExploListeH();
