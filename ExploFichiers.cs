@@ -14,7 +14,7 @@ namespace AtelierOO_101
 {
     internal class ExploFichiers 
     {
-        Util u = new Util();
+        Util _u = new Util();
         List<Humain> gr101 = new List<Humain>();
         Parseur psr = new Parseur();
         //------------------------------------------
@@ -23,7 +23,7 @@ namespace AtelierOO_101
         public void ExecExploFichiers()
         {
             string FICHIER_POPULATION = @"d:\alino\atelier\pop.txt";
-            u.Titre("Exploration des fichiers en C#");
+            _u.Titre("Exploration des fichiers en C#");
 
             if (File.Exists(FICHIER_POPULATION))
             {
@@ -50,33 +50,40 @@ namespace AtelierOO_101
                 Console.WriteLine($"Chargement de {gr101.Count} humains");
                 gr101.Sort(Humain.ComparerAge);
 
-                EcrireFichier();
+                //EcrireFichier();
             }
             else
             {
                 Console.WriteLine($"Erreur: le fichier {FICHIER_POPULATION} n'existe pas");
             }
-            u.Pause();
+            _u.Pause();
         }
 
         //------------------------------------------
         //
         //------------------------------------------
-        private void EcrireFichier()
+        public  void EcrireFichier()
         {
             Console.WriteLine("Écriture du fichier trié");
 
 
-            StreamWriter sw = new StreamWriter(@"d:\alino\atelier\popTri3.txt", true);
+            StreamWriter sw = new StreamWriter(@"d:\alino\atelier\pop.txt");
             sw.WriteLine("Groupe 101 trié par Age");
 
             gr101.Sort(Humain.ComparerNom);
 
-            foreach (Humain h in gr101)
+//            foreach (Humain h in gr101)
+            for(int i=0; i<1000; i++)
             {
-                sw.WriteLine($"{h.Nom};{h.Naissance.Year};{h.Naissance.Month};{h.Naissance.Day};{h.Sexe};{h.Domicile.NumCivique};{h.Domicile.Rue};{h.Domicile.Ville}");
+                Humain h = new Humain(_u.tabNoms[_u.rdm.Next(0, 10)], new DateTime(_u.rdm.Next(1964, 2007), _u.rdm.Next(1, 13), _u.rdm.Next(1, 29)), "F");
+//                sw.WriteLine($"{h.Nom};{h.Naissance.Year};{h.Naissance.Month};{h.Naissance.Day};{h.Sexe};{h.Domicile.NumCivique};{h.Domicile.Rue};{h.Domicile.Ville}");
+                sw.WriteLine($"{h.Nom};{h.Naissance.Year};{h.Naissance.Month};{h.Naissance.Day};{h.Sexe}");
             }
             sw.Close();
+            _u.Sep("ecriture de 1000 humains");
+
+                _u.Pause();
+
         }
 
         public void EcrireXHumains(int nbHumaGeneres= 1000)

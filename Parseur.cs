@@ -29,17 +29,19 @@ namespace AtelierOO_101
         {
             h = new Humain();
             msgErr = "";
+            int iter = 0;
 
             int nbChamps = CompterChamps(infoBrute);
-            if (nbChamps == 8)
+            if (nbChamps == 5)
             {
+                iter++;
                 string[] tabInfo = infoBrute.Split(';');
                 if (ValiderHumain(tabInfo, out string errValidation))
                 {
                     h = new Humain(tabInfo[0],
                                 new DateTime(int.Parse(tabInfo[1]), int.Parse(tabInfo[2]), int.Parse(tabInfo[3])),
-                                tabInfo[4],
-                                new Adresse(tabInfo[5], tabInfo[6], tabInfo[7]));
+                                tabInfo[4]);
+                    
                     return true;
                 }
                 else

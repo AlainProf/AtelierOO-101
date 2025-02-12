@@ -24,11 +24,21 @@ namespace AtelierOO_101
     }
     internal class Util
     {
+        public static readonly bool debogue = true;
+
+
         public Random rdm = new();
 
         public readonly string[] tabNoms = new string[10] { "Gabriel", "Guilaume", "Raphaël", "Louis", "Elias", "Félix", "Adam", "Olivier", "Donavan", "Derek" };
         public readonly string[] tabRues = new string[10] { "de l'Hotel", "du Parc", "Fournier", "Du palias", "2ième avenue", "boul labelle", "aut 15 nord", "sans issuee", "Donavan", "Boul arthur-sauvé" };
         public readonly string[] tabVilles = new string[10] { "Singe et rhum", "montréal", "laval", "Québec", "Trois rivière", "Gatineua", "Ottawa", "Longueuil", "Sherbrooke", "Teerebonne" };
+
+        bool _debogue; 
+
+        public Util(bool debogue = true)
+        {
+            _debogue = debogue; 
+        }
 
 
         //------------------------------------------
@@ -104,7 +114,8 @@ namespace AtelierOO_101
         //------------------------------------------
         public void Pause()
         {
-            Console.WriteLine("\n\tAppuyez sur une touche...");
+            if (debogue)
+                Console.WriteLine("\n\tAppuyez sur une touche...");
             Console.ReadKey(true);
         }
         //------------------------------------------
@@ -112,7 +123,8 @@ namespace AtelierOO_101
         //------------------------------------------
         public void Sep(string msg="")
         {
-            Console.WriteLine($"----------{msg}----------");
+            if (debogue)
+               Console.WriteLine($"----------{msg}----------");
         }
     }
 }

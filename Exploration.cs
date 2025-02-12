@@ -324,6 +324,18 @@ namespace AtelierOO_101
         {
             Etudiant e1 = new Etudiant();
             e1.Afficher();
+
+            e1 = new Etudiant("2222222", "soins infirmier", 0.59);
+            e1.Afficher();
+
+            e1 = new Etudiant("Gabriel", new DateTime(2007,12,23), "M", "3333333", "science nat ", 0.89);
+            e1.Afficher();
+            u.Pause();
+        }
+
+        public void ReadOnlyVsConst()
+        {
+            u.Titre("Const vs readonly");
             u.Pause();
         }
     }

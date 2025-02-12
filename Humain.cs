@@ -21,12 +21,15 @@ namespace AtelierOO_101
         public DateTime Naissance { get; set; }
         public string Sexe {  get; set; } 
         public Adresse Domicile { get; set; }
+        Util _u = new();
+
 
         //------------------------------------------
         //
         //------------------------------------------
         public Humain()
         {
+            //_u.Sep("In constructeur Humain()");
             Nom = "inconnu";
             Naissance = new DateTime(1,1,1);
             Sexe = "F";

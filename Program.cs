@@ -17,6 +17,8 @@ namespace AtelierOO_101
         //------------------------------------------
         static void Main(string[] args)
         {
+            AfficherParam(args);
+
             bool rester = true;
             while (rester)
             {
@@ -29,7 +31,7 @@ namespace AtelierOO_101
 
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Attention une exception est survenue: " + ex.Message);
                     Console.Write("Voulez-vous continuer? (o/n)");
                     char dec = u.SaisirChar();
 
@@ -47,8 +49,31 @@ namespace AtelierOO_101
         //------------------------------------------
         //
         //------------------------------------------
+        static void AfficherParam(string[] tabP)
+        {
+            int i = 0;
+            foreach (string p in tabP) 
+            {
+                i++;
+                u.Sep($"{i}:{p}");
+            }
+            if (i == 0)
+            {
+                u.Sep("Aucun param");
+            }
+
+            if (tabP.Length == 1)
+                //Util.debogue = false;
+            u.Pause();
+
+
+        }
+        //------------------------------------------
+        //
+        //------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine("O: Const vs Readonly");
             Console.WriteLine("G: Héritage en C#");
             Console.WriteLine("X: Exception en C#");
             Console.WriteLine("E: Énumération (enum) en C#");
@@ -77,6 +102,10 @@ namespace AtelierOO_101
 
             switch (choix.ToString().ToLower())
             {
+                case ("o"):
+                    explo.ReadOnlyVsConst();
+                    break;
+
                 case ("g"):
                     explo.ExecHeritage();
                     break;
@@ -105,8 +134,10 @@ namespace AtelierOO_101
                     ttt.Jouer();
                     break;
                 case ("i"):
+                    //exploF.ExecExploFichiers();
+                    //exploF.EcrireFichier();
                     exploF.ExecExploFichiers();
-                    //exploF.EcrireXHumains(100000);  
+                        //EcrireXHumains(100000);  
                     break;
                 case ("l"):
                     explo.ExploListeH();
