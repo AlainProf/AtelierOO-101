@@ -5,6 +5,7 @@
 //  Description: 
 //-----------------------------------------
 
+using AtelierOO_101.ONU;
 using AtelierOO_101.TP1;
 
 namespace AtelierOO_101
@@ -73,6 +74,7 @@ namespace AtelierOO_101
         //------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine("Y: ONU");
             Console.WriteLine("O: Const vs Readonly");
             Console.WriteLine("G: Héritage en C#");
             Console.WriteLine("X: Exception en C#");
@@ -102,6 +104,11 @@ namespace AtelierOO_101
 
             switch (choix.ToString().ToLower())
             {
+                case ("y"):
+                    Onu onu = new();
+                    onu.Exec();
+                    break;
+
                 case ("o"):
                     explo.ReadOnlyVsConst();
                     break;
