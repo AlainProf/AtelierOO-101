@@ -74,6 +74,7 @@ namespace AtelierOO_101
         //------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine("N: iNterface");
             Console.WriteLine("Y: ONU");
             Console.WriteLine("O: Const vs Readonly");
             Console.WriteLine("G: Héritage en C#");
@@ -104,6 +105,10 @@ namespace AtelierOO_101
 
             switch (choix.ToString().ToLower())
             {
+                case ("n"):
+                    explo.ExercInterface();
+                    break;
+
                 case ("y"):
                     Onu onu = new();
                     onu.Exec();

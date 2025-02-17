@@ -338,5 +338,46 @@ namespace AtelierOO_101
             u.Titre("Const vs readonly");
             u.Pause();
         }
+
+        public void ExercInterface()
+        {
+            u.Titre("Interface ");
+
+            Humain h1 = new Humain("Raphael", new Adresse("123", "allo", "Zagreb"));
+            Humain h2 = new Humain("MichelAngelo", new Adresse("23", "allo", "Zagreb"));
+            Humain h3 = new Humain("Leo", new Adresse("3", "allo", "Zagreb"));
+            Humain h4 = new Humain("Donatello", new Adresse("1", "allo", "Zagreb"));
+
+            List<Humain> tmnt = new List<Humain>();
+            tmnt.Add(h1);
+            tmnt.Add(h2);
+            tmnt.Add(h3);
+            tmnt.Add(h4);
+
+
+            u.Sep("Liste originale");
+            foreach(Humain h in tmnt)
+            {
+                h.Afficher();
+            }
+
+            tmnt.Sort();
+            u.Sep("Liste triée");
+            foreach (Humain h in tmnt)
+            {
+                h.Afficher();
+            }
+
+
+            u.Sep("Tri à la carte");
+            tmnt.Sort(Humain.ComparerNom);
+            foreach (Humain h in tmnt)
+            {
+                h.Afficher();
+            }
+
+
+            u.Pause();
+        }
     }
 }

@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace AtelierOO_101
 {
-    internal class Humain
+    internal class Humain:IComparable<Humain>
     {
        // private string Nom;
         public string Nom { get; set; }
@@ -73,6 +73,32 @@ namespace AtelierOO_101
             Naissance = nais;
             Sexe = s;
             Domicile = dom;
+        }
+        //------------------------------------------
+        //
+        //------------------------------------------
+        public Humain(string n, Adresse dom)
+        {
+            Nom = n;
+            Naissance = DateTime.Now;
+            Sexe = "F";
+            Domicile = dom;
+        }
+
+        public int CompareTo(Humain other)
+        {
+            if (this.Domicile.Ville.CompareTo(other.Domicile.Ville) == 1)
+                return 1;
+            if (this.Domicile.Ville.CompareTo(other.Domicile.Ville) == -1)
+                return -1;
+
+            if (this.Domicile.Rue.CompareTo(other.Domicile.Rue) == 1)
+                return 1;
+            if (this.Domicile.Rue.CompareTo(other.Domicile.Rue) == -1)
+                return -1;
+
+            return (this.Domicile.NumCivique.CompareTo(other.Domicile.NumCivique)
+);
         }
 
         public static Humain HumainAleatoire()
