@@ -8,7 +8,7 @@ namespace AtelierOO_101
 {
     internal class Etudiant : Humain
     {
-        public string Matricule { get; set; }
+        string Matricule { get; set; }
         public string Programme { get; set; }
         public double Moyenne { get; set; }
         Util _u = new();

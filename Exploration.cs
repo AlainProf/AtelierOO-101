@@ -5,9 +5,11 @@
 //  Description: 
 //-----------------------------------------
 using AtelierOO_101.Poker;
+using AtelierOO_101.TP1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +17,9 @@ namespace AtelierOO_101
 {
     internal class Exploration
     {
+        const int NB_COLONNNES = 27;
+        const int NB_RANGEES = 20;
+ 
         Util u = new ();
         const int taille = 10;
         int[] tabEntiers = new int[taille];
@@ -131,7 +136,8 @@ namespace AtelierOO_101
         //------------------------------------------
         private int ComparerNomLoc(Humain a, Humain b)
         {
-            return a.Nom.CompareTo(b.Nom);
+            return 1;
+            //return a.Nom.CompareTo(b.Nom);
         }
 
         //------------------------------------------
@@ -322,7 +328,13 @@ namespace AtelierOO_101
 
         public void ExecHeritage()
         {
-            Etudiant e1 = new Etudiant();
+            u.Titre("Protected et Héritage");
+
+
+            u.Pause();
+
+
+            /*Etudiant e1 = new Etudiant();
             e1.Afficher();
 
             e1 = new Etudiant("2222222", "soins infirmier", 0.59);
@@ -330,7 +342,9 @@ namespace AtelierOO_101
 
             e1 = new Etudiant("Gabriel", new DateTime(2007,12,23), "M", "3333333", "science nat ", 0.89);
             e1.Afficher();
-            u.Pause();
+            u.Pause();*/
+
+
         }
 
         public void ReadOnlyVsConst()
@@ -379,5 +393,146 @@ namespace AtelierOO_101
 
             u.Pause();
         }
+
+        public void PileEtFile()
+        {
+            u.Titre("Pile et File (stack et Queue)");
+
+            Voiture v1 = new("Ford", "Focus", "Noire");
+            Voiture v2 = new("Mercedes", "AMG1", "Rose");
+            Voiture v3 = new("Nissan", "Micra", "Jaune");
+
+            Stack<Voiture> entreeGarage = new Stack<Voiture>();
+
+            entreeGarage.Push(v1);
+            v1.Afficher();
+            entreeGarage.Push(v2);
+            v2.Afficher();
+            entreeGarage.Push(v3);
+            v3.Afficher();
+
+            u.Sep("Position dans la pile:");
+
+
+            u.Sep("Position de sortie:");
+
+            while(entreeGarage.Count > 0)
+            {
+                Voiture tmp = entreeGarage.Pop();
+                tmp.Afficher();
+            }
+
+
+            u.Pause();
+
+            u.Sep("---------------------");
+
+            Queue<Voiture> laveAuto = new Queue<Voiture>();
+            u.Sep("Position dans la file:");
+
+            laveAuto.Enqueue(v1);
+            v1.Afficher();
+            laveAuto.Enqueue(v2);
+            v2.Afficher();
+            laveAuto.Enqueue(v3);
+            v3.Afficher();
+
+
+            u.Sep("Position de sortie:");
+
+            while (laveAuto.Count > 0)
+            {
+                Voiture tmp = laveAuto.Dequeue();
+                tmp.Afficher();
+            }
+
+
+            u.Pause();
+        }
+
+        public void Tab2D()
+        {
+            u.Titre("Tableau à deux dimension");
+
+
+
+            char[,] grille = new char[NB_COLONNNES, NB_RANGEES];
+
+            InitGrilleA(ref grille);
+            AfficherGrille(grille);
+
+            u.Pause();
+        }
+
+        void InitGrilleA(ref char[,] gr)
+        {
+            for (int y = 0; y < NB_RANGEES; y++)
+            {
+                for (int x = 0; x < NB_COLONNNES; x++)
+                {
+                    switch(u.rdm.Next(0,3))
+                    {
+                      case 0:
+                        gr[x, y] = 'O';
+                        break;
+
+                     case 1:
+                        gr[x, y] = 'X';
+                        break;
+
+                     case 2:
+                        gr[x, y] = '_';
+                        break;
+
+                    }
+                }
+            }
+        }
+        void InitGrilleH(ref char[,] gr)
+        {
+            int iter = 65;
+            for (int y = 0; y < NB_RANGEES; y++)
+            {
+                for (int x = 0; x < NB_COLONNNES; x++)
+                {
+                    if (iter > 90)
+                    {
+                        iter = 65;
+                    }
+                    gr[x, y] = (char)iter;
+                    iter++;
+                }
+            }
+        }
+        void InitGrille(ref char[,] gr)
+        {
+            int iter = 65;
+            for (int x = 0; x < NB_COLONNNES; x++)
+            {
+                for (int y = 0; y < NB_RANGEES; y++)
+                {
+                    if (iter > 90)
+                    {
+                        iter = 65;
+                    }
+                    gr[x, y] = (char)iter;
+                    iter++;
+                }
+            }
+        }
+        void AfficherGrille(char[,] gr)
+        {
+            for (int x = 0; x < NB_COLONNNES; x++)
+            {
+                for (int y = 0; y < NB_RANGEES; y++)
+                {
+                    Console.SetCursorPosition(x * 4 + 10, y + 12);
+                    Console.Write("|_");
+                    Console.Write(gr[x, y]);
+                    Console.Write("_|");
+                }
+            }
+        }
+
     }
 }

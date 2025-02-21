@@ -74,6 +74,8 @@ namespace AtelierOO_101
         //------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine("2: Tableua à deux dim");
+            Console.WriteLine("B: File et Pile en C#");
             Console.WriteLine("N: iNterface");
             Console.WriteLine("Y: ONU");
             Console.WriteLine("O: Const vs Readonly");
@@ -105,6 +107,14 @@ namespace AtelierOO_101
 
             switch (choix.ToString().ToLower())
             {
+                case ("2"):
+                    explo.Tab2D();
+                    break;
+
+                case ("b"):
+                    explo.PileEtFile();
+                    break;
+
                 case ("n"):
                     explo.ExercInterface();
                     break;

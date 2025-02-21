@@ -77,7 +77,7 @@ namespace AtelierOO_101
             {
                 Humain h = new Humain(_u.tabNoms[_u.rdm.Next(0, 10)], new DateTime(_u.rdm.Next(1964, 2007), _u.rdm.Next(1, 13), _u.rdm.Next(1, 29)), "F");
 //                sw.WriteLine($"{h.Nom};{h.Naissance.Year};{h.Naissance.Month};{h.Naissance.Day};{h.Sexe};{h.Domicile.NumCivique};{h.Domicile.Rue};{h.Domicile.Ville}");
-                sw.WriteLine($"{h.Nom};{h.Naissance.Year};{h.Naissance.Month};{h.Naissance.Day};{h.Sexe}");
+              //  sw.WriteLine($"{h.Nom};{h.Naissance.Year};{h.Naissance.Month};{h.Naissance.Day};{h.Sexe}");
             }
             sw.Close();
             _u.Sep("ecriture de 1000 humains");
