@@ -118,10 +118,10 @@ namespace AtelierOO_101
         //------------------------------------------
         //
         //------------------------------------------
-        public void Afficher()
+        public virtual void Afficher()
         {
-            Console.WriteLine($"{Nom}, né en {Naissance.Year} ");
-            Domicile.Afficher();    
+            Console.Write($"{Nom}, {Age()} ans ");
+            //Domicile.Afficher();    
         }
 
         //------------------------------------------

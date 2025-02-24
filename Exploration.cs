@@ -4,6 +4,7 @@
 //  Date : 2025-01-27
 //  Description: 
 //-----------------------------------------
+using AtelierOO_101.Donnees;
 using AtelierOO_101.Poker;
 using AtelierOO_101.TP1;
 using System;
@@ -532,6 +533,47 @@ namespace AtelierOO_101
                     Console.Write("_|");
                 }
             }
+        }
+
+        public void GenereBD(int nbEnreg=1000000)
+        {
+            u.Titre($"Génération de {nbEnreg} humains");
+            List<Humain> population = new List<Humain>();
+
+            for(int i =0; i< nbEnreg; i++)
+            {
+                population.Add(Util.GenereHumainAleatoire());  
+            }
+
+            u.Pause();
+
+            int cmp = 0;
+            /* foreach (Humain h2 in population)
+            {
+                cmp++;
+                if (cmp % 1000 == 0)
+                {
+                    Console.WriteLine();
+                    h2.Afficher();
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.Write(".");
+                }
+                //h2.Domicile.Afficher();
+                //Console.WriteLine("\n--------------------------------");
+            }*/
+
+            StreamWriter sw = new StreamWriter(@"d:\alino\atelier\pop.txt");
+            foreach (Humain h2 in population)
+            {
+
+            }
+                sw.Close();
+                u.Sep("ecriture de 1000 humains");
+
+                u.Pause();
         }
 
     }

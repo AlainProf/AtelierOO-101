@@ -74,6 +74,7 @@ namespace AtelierOO_101
         //------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine("Z: BaZe de données");
             Console.WriteLine("2: Tableua à deux dim");
             Console.WriteLine("B: File et Pile en C#");
             Console.WriteLine("N: iNterface");
@@ -107,6 +108,10 @@ namespace AtelierOO_101
 
             switch (choix.ToString().ToLower())
             {
+                case ("z"):
+                    explo.GenereBD();
+                    break;
+
                 case ("2"):
                     explo.Tab2D();
                     break;

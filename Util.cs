@@ -4,6 +4,7 @@
 //  Date : 2025-01-27
 //  Description: 
 //-----------------------------------------
+using AtelierOO_101.Donnees;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -125,6 +126,58 @@ namespace AtelierOO_101
         {
             if (debogue)
                Console.WriteLine($"----------{msg}----------");
+        }
+
+        public static Humain GenereHumainAleatoire()
+        {
+            Util u = new Util();
+
+            int iPrenom = u.rdm.Next(0, 200);
+            string sexe = "M";
+            if (iPrenom < 102)
+            {
+                sexe = "F";
+            }
+
+            int iFam = u.rdm.Next(0, 200);
+            string nom = DonnesDeBase.tabPrenoms[iPrenom] + " " + DonnesDeBase.tabFamilles[iFam];
+
+            DateTime naissance = new DateTime(u.rdm.Next(1926, 2024), u.rdm.Next(1, 13), u.rdm.Next(1, 29));
+
+            int iRue = u.rdm.Next(0, 500);
+            int iVille = u.rdm.Next(0, 50);
+
+            Adresse dom = new Adresse((u.rdm.Next(17, 14199)).ToString(),
+                                      DonnesDeBase.tabRues[iRue],
+                                      DonnesDeBase.tabVilles[iVille]);
+
+            int tirage = u.rdm.Next(0, 1000);
+            if (tirage == 500)
+            {
+                DateTime limMin = new DateTime(2008, 02, 24);
+                DateTime limMax = new DateTime(1975, 02, 24);
+
+                if (naissance.Ticks > limMin.Ticks && naissance.Ticks < limMax.Ticks )
+                {
+                    return new Humain(nom, naissance, sexe, dom);
+                }
+
+                int iProg = u.rdm.Next(0, 115);
+
+                tirage = u.rdm.Next(0, 10);
+                if (tirage == 5)
+                {
+                    int iEntrep = u.rdm.Next(0, 50);
+                    return new Stagiaire(nom, naissance, sexe, dom, 
+                                         DonnesDeBase.tabProg[iProg], u.rdm.Next(10, 100),
+                                         DonnesDeBase.tabEntreprises[iEntrep], u.rdm.Next(0,16000));
+
+                }
+
+                return new Etudiant(nom, naissance, sexe, dom, DonnesDeBase.tabProg[iProg], u.rdm.Next(10, 100));
+            }
+            return new Humain(nom, naissance, sexe, dom);
+
         }
     }
 }

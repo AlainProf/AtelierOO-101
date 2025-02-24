@@ -13,6 +13,8 @@ namespace AtelierOO_101
         public double Moyenne { get; set; }
         Util _u = new();
 
+        static int MatMax = 1000000;
+
         public Etudiant()
         {
             _u.Sep("In constructeur Etudiant()");
@@ -27,17 +29,26 @@ namespace AtelierOO_101
             Programme = prog;
             Moyenne = moy;
         }
-        public Etudiant(string n, DateTime nais, string g, string mat, string prog, double moy):base(n,nais,g)
+        public Etudiant(string n, DateTime nais, string g, string mat, string prog, double moy) : base(n, nais, g)
         {
             _u.Sep("In constructeur Etudiant(n,ne, g, m,p,mo)");
             Matricule = mat;
             Programme = prog;
             Moyenne = moy;
         }
-
-        public void Afficher()
+        public Etudiant(string n, DateTime nais, string g, Adresse dom, string prog, double moy) : 
+            base(n, nais, g, dom)
         {
-            Console.WriteLine($"Nom: {Nom}, {Age()} ans, mat:{Matricule}, inscrit en {Programme}");
+            MatMax++;
+            Matricule = MatMax.ToString();
+            Programme = prog;
+            Moyenne = moy;
+        }
+
+        public override void Afficher()
+        {
+            base.Afficher();
+            Console.Write($", {Matricule}, {Programme} moy de {Moyenne}");
         }
     }
 }

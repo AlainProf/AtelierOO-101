@@ -8,9 +8,19 @@ namespace AtelierOO_101
 {
     internal class Stagiaire:Etudiant
     {
-        public void Afficher()
+        public string Entreprise {  get; set; }
+        public int Salaire;
+
+        public Stagiaire(string n, DateTime nais, string g, Adresse dom, string prog, double moy, string entrep, int sal) : base(n, nais, g, dom,prog,moy)
         {
-            Console.WriteLine($"{Nom}");
+            Entreprise = entrep;
+            Salaire = sal;
+        } 
+
+        public override void Afficher()
+        {
+            base.Afficher();
+            Console.Write($" en stage chez {Entreprise}, {Salaire}$/an");
         }
 
     }

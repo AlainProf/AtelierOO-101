@@ -43,7 +43,7 @@ namespace AtelierOO_101
         //------------------------------------------
         public void Afficher()
         {
-            Console.WriteLine($"{NumCivique} {Rue}, {Ville}");  
+            Console.Write($"{NumCivique} {Rue}, {Ville}");  
         }
     }
 }
