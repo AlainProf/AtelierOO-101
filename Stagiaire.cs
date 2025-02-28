@@ -11,11 +11,18 @@ namespace AtelierOO_101
         public string Entreprise {  get; set; }
         public int Salaire;
 
-        public Stagiaire(string n, DateTime nais, string g, Adresse dom, string prog, double moy, string entrep, int sal) : base(n, nais, g, dom,prog,moy)
+        public Stagiaire(string n, DateTime nais, string g, Adresse dom, string prog, double moy, string entrep, int sal) : base(n, nais, g, dom, prog, moy)
         {
             Entreprise = entrep;
             Salaire = sal;
-        } 
+        }
+        public Stagiaire(string n, DateTime nais, string g, Adresse dom, 
+                         string mat, string prog, double moy, 
+                         string entrep, int sal) : base(n, nais, g, dom, mat, prog, moy)
+        {
+            Entreprise = entrep;
+            Salaire = sal;
+        }
 
         public override void Afficher()
         {

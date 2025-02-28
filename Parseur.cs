@@ -32,7 +32,53 @@ namespace AtelierOO_101
             int iter = 0;
 
             int nbChamps = CompterChamps(infoBrute);
-            if (nbChamps == 5)
+
+            if (nbChamps == 13)
+            {
+                iter++;
+                string[] tabInfo = infoBrute.Split(';');
+                if (ValiderStagiaire(tabInfo, out string errValidation))
+                {
+                    h = new Stagiaire(tabInfo[0],
+                                new DateTime(int.Parse(tabInfo[1]), int.Parse(tabInfo[2]), int.Parse(tabInfo[3])),
+                                tabInfo[4],
+                                new Adresse(tabInfo[5], tabInfo[6], tabInfo[7]),
+                                tabInfo[8], tabInfo[9], double.Parse(tabInfo[10]),
+                                tabInfo[11], int.Parse(tabInfo[12])
+                                );
+                    return true;
+                }
+                else
+                {
+                    msgErr = $"Information corrompue: {errValidation}";
+                    return false;
+                }
+            }
+
+
+            if (nbChamps == 11)
+            {
+                iter++;
+                string[] tabInfo = infoBrute.Split(';');
+                if (ValiderEtudiant(tabInfo, out string errValidation))
+                {
+                    h = new Etudiant(tabInfo[0],
+                                new DateTime(int.Parse(tabInfo[1]), int.Parse(tabInfo[2]), int.Parse(tabInfo[3])),
+                                tabInfo[4],
+                                new Adresse(tabInfo[5], tabInfo[6], tabInfo[7]),
+                                tabInfo[8], tabInfo[9], double.Parse(tabInfo[10])
+                                );
+                    return true;
+                }
+                else
+                {
+                    msgErr = $"Information corrompue: {errValidation}";
+                    return false;
+                }
+            }
+
+
+            if (nbChamps == 8)
             {
                 iter++;
                 string[] tabInfo = infoBrute.Split(';');
@@ -40,7 +86,9 @@ namespace AtelierOO_101
                 {
                     h = new Humain(tabInfo[0],
                                 new DateTime(int.Parse(tabInfo[1]), int.Parse(tabInfo[2]), int.Parse(tabInfo[3])),
-                                tabInfo[4]);
+                                tabInfo[4],
+                                new Adresse(tabInfo[5], tabInfo[6], tabInfo[7])
+                                );
                     
                     return true;
                 }
@@ -70,24 +118,17 @@ namespace AtelierOO_101
                 errValidation = (CODE_ERREUR.NomTropCourt).ToString();
                 return false;
             }
-            if (int.TryParse(tabInfo[1], out int val))
-            {
-                if (val < 1900)
-                {
-                    errValidation = (CODE_ERREUR.TropVieux).ToString();
-                    return false;
-                }
-                if (val > 2007)
-                {
-                    errValidation = (CODE_ERREUR.Mineur).ToString();
-                    return false;
-                }
-            }
-            else
-            {
-                errValidation = "Année n'est pas un numérique";
-                return false;
-            }
+            return true;
+        }
+
+        private bool ValiderEtudiant(string[] tabInfo, out string errValidation)
+        {
+            errValidation = "";
+            return true;
+        }
+        private bool ValiderStagiaire(string[] tabInfo, out string errValidation)
+        {
+            errValidation = "";
             return true;
         }
 

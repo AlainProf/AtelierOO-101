@@ -74,8 +74,12 @@ namespace AtelierOO_101
         //------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine("1: Recensement");
+            Console.WriteLine("2: Liste electorale");
+            Console.WriteLine("3: Pret bourse");
+            Console.WriteLine("4: Milieu de stage");
             Console.WriteLine("Z: BaZe de données");
-            Console.WriteLine("2: Tableua à deux dim");
+            Console.WriteLine("0: Tableua à deux dim");
             Console.WriteLine("B: File et Pile en C#");
             Console.WriteLine("N: iNterface");
             Console.WriteLine("Y: ONU");
@@ -105,9 +109,14 @@ namespace AtelierOO_101
             char choix = u.SaisirChar();
             Exploration explo = new(); ;
             ExploFichiers exploF = new();
+            ExploPoly exploPoly = new();
 
             switch (choix.ToString().ToLower())
             {
+                case ("1"):
+                    exploPoly.Recensement();
+                    break;
+
                 case ("z"):
                     explo.GenereBD();
                     break;

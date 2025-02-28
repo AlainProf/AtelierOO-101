@@ -8,7 +8,7 @@ namespace AtelierOO_101
 {
     internal class Etudiant : Humain
     {
-        string Matricule { get; set; }
+        public string Matricule { get; set; }
         public string Programme { get; set; }
         public double Moyenne { get; set; }
         Util _u = new();
@@ -36,11 +36,19 @@ namespace AtelierOO_101
             Programme = prog;
             Moyenne = moy;
         }
-        public Etudiant(string n, DateTime nais, string g, Adresse dom, string prog, double moy) : 
+        public Etudiant(string n, DateTime nais, string g, Adresse dom, string prog, double moy) :
             base(n, nais, g, dom)
         {
             MatMax++;
             Matricule = MatMax.ToString();
+            Programme = prog;
+            Moyenne = moy;
+        }
+        public Etudiant(string n, DateTime nais, string g, Adresse dom, string mat, string prog, double moy) :
+            base(n, nais, g, dom)
+        {
+
+            Matricule = mat;
             Programme = prog;
             Moyenne = moy;
         }

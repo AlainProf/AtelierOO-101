@@ -152,7 +152,7 @@ namespace AtelierOO_101
                                       DonnesDeBase.tabVilles[iVille]);
 
             int tirage = u.rdm.Next(0, 1000);
-            if (tirage == 500)
+            if (tirage > 500)
             {
                 DateTime limMin = new DateTime(2008, 02, 24);
                 DateTime limMax = new DateTime(1975, 02, 24);

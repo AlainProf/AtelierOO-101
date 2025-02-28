@@ -537,6 +537,12 @@ namespace AtelierOO_101
 
         public void GenereBD(int nbEnreg=1000000)
         {
+            u.Titre("Faudrait réactiver le code");
+            u.Pause();
+            return;
+
+            ////////////////////////////////////////
+
             u.Titre($"Génération de {nbEnreg} humains");
             List<Humain> population = new List<Humain>();
 
@@ -547,33 +553,42 @@ namespace AtelierOO_101
 
             u.Pause();
 
-            int cmp = 0;
-            /* foreach (Humain h2 in population)
-            {
-                cmp++;
-                if (cmp % 1000 == 0)
-                {
-                    Console.WriteLine();
-                    h2.Afficher();
-                    Console.WriteLine();
-                }
-                else
-                {
-                    Console.Write(".");
-                }
-                //h2.Domicile.Afficher();
-                //Console.WriteLine("\n--------------------------------");
-            }*/
+            int cmpEtudiants = 0;
+            int cmpStagiaires = 0;
 
             StreamWriter sw = new StreamWriter(@"d:\alino\atelier\pop.txt");
+            
             foreach (Humain h2 in population)
             {
+                StringBuilder sb = new();
+                sb.Append(h2.Nom);
+                sb.Append(";");
+                sb.Append($"{h2.Naissance.Year};{h2.Naissance.Month};{h2.Naissance.Day};");
+                sb.Append(h2.Sexe + ";");
+                sb.Append($"{h2.Domicile.NumCivique};{h2.Domicile.Rue};{h2.Domicile.Ville}");
 
+                if (h2 is Etudiant)
+                {
+                    Etudiant eTmp = h2 as Etudiant;
+                    if (eTmp != null)
+                    {
+                        cmpEtudiants++;
+                        sb.Append($";{eTmp.Matricule};{eTmp.Programme};{eTmp.Moyenne.ToString("N2")}");
+                    }
+                    if (eTmp is Stagiaire)
+                    {
+                        cmpEtudiants--;
+                        cmpStagiaires++;
+                        Stagiaire stag = eTmp as Stagiaire; 
+                        sb.Append($";{stag.Entreprise};{stag.Salaire}");
+
+                    }
+                }
+                sw.WriteLine(sb);
             }
-                sw.Close();
-                u.Sep("ecriture de 1000 humains");
-
-                u.Pause();
+            sw.Close();
+            u.Sep($"ecriture de {population.Count}, dont {cmpEtudiants} étudiants, parmis ceux-ci {cmpStagiaires} stagiaires");
+            u.Pause();
         }
 
     }

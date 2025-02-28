@@ -17,7 +17,7 @@ namespace AtelierOO_101
     internal class Humain:IComparable<Humain>
     {
        // private string Nom;
-        protected string Nom { get; set; }
+        public string Nom { get; set; }
         public DateTime Naissance { get; set; }
         public string Sexe {  get; set; } 
         public Adresse Domicile { get; set; }
