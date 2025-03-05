@@ -1,18 +1,20 @@
 ﻿//-----------------------------------------
-//  Nom: 
+//  Nom: ExploFichiers.cs
 //  Auteur : Alain Martel
 //  Date : 2025-0
 //  Description: 
 //-----------------------------------------
+using AtelierOO_101.Classes;
+using AtelierOO_101.ClassesUtil;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtelierOO_101
+namespace AtelierOO_101.Explo
 {
-    internal class ExploFichiers 
+    internal class ExploFichiers
     {
         Util _u = new Util();
         List<Humain> gr101 = new List<Humain>();
@@ -27,8 +29,8 @@ namespace AtelierOO_101
 
             if (File.Exists(FICHIER_POPULATION))
             {
-                StreamReader reader = new StreamReader(FICHIER_POPULATION);
-                string ligneCourante;
+                StreamReader? reader = new StreamReader(FICHIER_POPULATION);
+                string? ligneCourante;
                 int iter = 0;
                 while (reader.Peek() > -1)
                 {
@@ -62,7 +64,7 @@ namespace AtelierOO_101
         //------------------------------------------
         //
         //------------------------------------------
-        public  void EcrireFichier()
+        public void EcrireFichier()
         {
             Console.WriteLine("Écriture du fichier trié");
 
@@ -72,27 +74,30 @@ namespace AtelierOO_101
 
             gr101.Sort(Humain.ComparerNom);
 
-//            foreach (Humain h in gr101)
-            for(int i=0; i<1000; i++)
+            //            foreach (Humain h in gr101)
+            for (int i = 0; i < 1000; i++)
             {
                 Humain h = new Humain(_u.tabNoms[_u.rdm.Next(0, 10)], new DateTime(_u.rdm.Next(1964, 2007), _u.rdm.Next(1, 13), _u.rdm.Next(1, 29)), "F");
-//                sw.WriteLine($"{h.Nom};{h.Naissance.Year};{h.Naissance.Month};{h.Naissance.Day};{h.Sexe};{h.Domicile.NumCivique};{h.Domicile.Rue};{h.Domicile.Ville}");
-              //  sw.WriteLine($"{h.Nom};{h.Naissance.Year};{h.Naissance.Month};{h.Naissance.Day};{h.Sexe}");
+                //                sw.WriteLine($"{h.Nom};{h.Naissance.Year};{h.Naissance.Month};{h.Naissance.Day};{h.Sexe};{h.Domicile.NumCivique};{h.Domicile.Rue};{h.Domicile.Ville}");
+                //  sw.WriteLine($"{h.Nom};{h.Naissance.Year};{h.Naissance.Month};{h.Naissance.Day};{h.Sexe}");
             }
             sw.Close();
             _u.Sep("ecriture de 1000 humains");
 
-                _u.Pause();
+            _u.Pause();
 
         }
 
-        public void EcrireXHumains(int nbHumaGeneres= 1000)
+        //------------------------------------------
+        //
+        //------------------------------------------
+        public void EcrireXHumains(int nbHumaGeneres = 1000)
         {
             //List<Humain> grpAlea = new List<Humain>();
             for (int i = 0; i < nbHumaGeneres; i++)
             {
-                Humain h = Humain.HumainAleatoire();    
-                gr101.Add(h);  
+                Humain h = Humain.HumainAleatoire();
+                gr101.Add(h);
             }
 
             EcrireFichier();

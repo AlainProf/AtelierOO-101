@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AtelierOO_101.ClassesUtil;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AtelierOO_101.ONU
 {
-     class Onu
+    class Onu
     {
         Util _u = new();
         public void Exec()

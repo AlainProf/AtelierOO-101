@@ -1,23 +1,24 @@
 ﻿//-----------------------------------------
-//  Nom: 
+//  Nom: Parseur.cs
 //  Auteur : Alain Martel
 //  Date : 2025-0
 //  Description: 
 //-----------------------------------------
+using AtelierOO_101.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtelierOO_101
+namespace AtelierOO_101.ClassesUtil
 {
     enum CODE_ERREUR
     {
         NomTropLong = 100,
         NomTropCourt = 200,
         TropVieux = 300,
-        Mineur =400
+        Mineur = 400
     }
 
     internal class Parseur
@@ -25,10 +26,15 @@ namespace AtelierOO_101
         //------------------------------------------
         //
         //------------------------------------------
-        public bool ParsingHumain(string infoBrute, out Humain h, out string msgErr)
+        public bool ParsingHumain(string? infoBrute, out Humain h, out string msgErr)
         {
             h = new Humain();
             msgErr = "";
+
+            if (infoBrute == null)
+                return true;
+
+
             int iter = 0;
 
             int nbChamps = CompterChamps(infoBrute);
@@ -89,7 +95,7 @@ namespace AtelierOO_101
                                 tabInfo[4],
                                 new Adresse(tabInfo[5], tabInfo[6], tabInfo[7])
                                 );
-                    
+
                     return true;
                 }
                 else
@@ -110,22 +116,28 @@ namespace AtelierOO_101
             errValidation = "";
             if (tabInfo[0].Length > 50)
             {
-                errValidation = (CODE_ERREUR.NomTropLong).ToString();
+                errValidation = CODE_ERREUR.NomTropLong.ToString();
                 return false;
             }
             if (tabInfo[0].Length < 2)
             {
-                errValidation = (CODE_ERREUR.NomTropCourt).ToString();
+                errValidation = CODE_ERREUR.NomTropCourt.ToString();
                 return false;
             }
             return true;
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         private bool ValiderEtudiant(string[] tabInfo, out string errValidation)
         {
             errValidation = "";
             return true;
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         private bool ValiderStagiaire(string[] tabInfo, out string errValidation)
         {
             errValidation = "";

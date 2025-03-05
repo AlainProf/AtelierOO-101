@@ -1,16 +1,17 @@
 ﻿//-----------------------------------------
-//  Nom: 
+//  Nom: ExploEcran.cs
 //  Auteur : Alain Martel
 //  Date : 2025-0
 //  Description: 
 //-----------------------------------------
+using AtelierOO_101.ClassesUtil;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtelierOO_101
+namespace AtelierOO_101.Explo
 {
     internal class ExploEcran
     {
@@ -55,11 +56,11 @@ namespace AtelierOO_101
             int x;
             int y;
 
-            while(compteur < 10)
+            while (compteur < 10)
             {
-                for(y=0; y< Console.WindowHeight; y++)
+                for (y = 0; y < Console.WindowHeight; y++)
                 {
-                    for(x=0; x< Console.WindowWidth; x++)
+                    for (x = 0; x < Console.WindowWidth; x++)
                     {
                         Console.BackgroundColor = (ConsoleColor)(y % 16);
                         Console.SetCursorPosition(x, y);
@@ -67,9 +68,9 @@ namespace AtelierOO_101
                     }
                 }
 
-                for (x=0; x < Console.WindowWidth; x++)
+                for (x = 0; x < Console.WindowWidth; x++)
                 {
-                    for (y=0; y < Console.WindowHeight; y++)
+                    for (y = 0; y < Console.WindowHeight; y++)
                     {
                         Console.BackgroundColor = (ConsoleColor)(x % 16);
                         Console.SetCursorPosition(x, y);
@@ -86,8 +87,8 @@ namespace AtelierOO_101
         //------------------------------------------
         public void Parcours()
         {
-            int limiteX = (Console.WindowWidth - 1);  
-            int limiteY = (Console.WindowHeight - 1);
+            int limiteX = Console.WindowWidth - 1;
+            int limiteY = Console.WindowHeight - 1;
 
             while (true)
             {
@@ -125,7 +126,7 @@ namespace AtelierOO_101
                     Console.BackgroundColor = (ConsoleColor)u.rdm.Next(0, 16);
                     for (; y > iter; y--)
                     {
-                        Console.SetCursorPosition(x, y); 
+                        Console.SetCursorPosition(x, y);
                         Console.BackgroundColor = (ConsoleColor)u.rdm.Next(0, 16);
                         Console.Write(' ');
                     }
@@ -143,7 +144,7 @@ namespace AtelierOO_101
         public void NoirEtBlanc()
         {
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;   
+            Console.ForegroundColor = ConsoleColor.White;
 
         }
     }

@@ -10,12 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtelierOO_101
+namespace AtelierOO_101.Classes
 {
     internal class Adresse
     {
-        public string NumCivique {  get; set; } 
-        public string Rue {  get; set; }    
+        public string NumCivique { get; set; }
+        public string Rue { get; set; }
         public string Ville { get; set; }
 
         //------------------------------------------
@@ -43,7 +43,7 @@ namespace AtelierOO_101
         //------------------------------------------
         public void Afficher()
         {
-            Console.Write($"{NumCivique} {Rue}, {Ville}");  
+            Console.Write($"{NumCivique} {Rue}, {Ville}");
         }
     }
 }

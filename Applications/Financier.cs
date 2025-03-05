@@ -4,13 +4,14 @@
 //  Date : 2025-01-27
 //  Description: 
 //-----------------------------------------
+using AtelierOO_101.ClassesUtil;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtelierOO_101
+namespace AtelierOO_101.Applications
 {
     internal class Financier
     {
@@ -49,15 +50,15 @@ namespace AtelierOO_101
 
             switch (choix.ToString().ToLower())
             {
-                case ("r"):
+                case "r":
                     CalculerRemboursement();
                     u.Pause();
                     break;
-                case ("p"):
+                case "p":
                     CalculerPlacement();
                     u.Pause();
                     break;
-                case ("q"):
+                case "q":
                 default:
                     rester = false;
                     break;
@@ -73,7 +74,7 @@ namespace AtelierOO_101
 
             Console.Write("Montant du placement:");
             int placement = u.SaisirEntier();
-            
+
             Console.Write("Taux intérêt annuel:");
             double tauxInteretAnnuel = u.SaisirReel();
 
@@ -98,12 +99,12 @@ namespace AtelierOO_101
                                   "int courant".PadLeft(12));
             }
 
-            for(int i=0; i<duree; i++) 
+            for (int i = 0; i < duree; i++)
             {
                 double intCourant = capitalCum * tauxInteretAnnuel;
                 intCum += intCourant;
-                capitalCum += intCourant;   
-                
+                capitalCum += intCourant;
+
                 if (infoDetail == 'o')
                 {
                     Console.WriteLine(i.ToString().PadLeft(6)

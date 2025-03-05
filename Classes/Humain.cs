@@ -4,6 +4,7 @@
 //  Date : 2025-01-27
 //  Description: 
 //-----------------------------------------
+using AtelierOO_101.ClassesUtil;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,14 +13,14 @@ using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtelierOO_101
+namespace AtelierOO_101.Classes
 {
-    internal class Humain:IComparable<Humain>
+    internal class Humain : IComparable<Humain>
     {
-       // private string Nom;
+        // private string Nom;
         public string Nom { get; set; }
         public DateTime Naissance { get; set; }
-        public string Sexe {  get; set; } 
+        public string Sexe { get; set; }
         public Adresse Domicile { get; set; }
         Util _u = new();
 
@@ -31,9 +32,9 @@ namespace AtelierOO_101
         {
             //_u.Sep("In constructeur Humain()");
             Nom = "inconnu";
-            Naissance = new DateTime(1,1,1);
+            Naissance = new DateTime(1, 1, 1);
             Sexe = "F";
-            Domicile = new Adresse();   
+            Domicile = new Adresse();
         }
         //------------------------------------------
         //
@@ -63,7 +64,9 @@ namespace AtelierOO_101
             Nom = n;
             Naissance = nais;
             Sexe = s;
+            Domicile = new Adresse();
         }
+
         //------------------------------------------
         //
         //------------------------------------------
@@ -85,34 +88,41 @@ namespace AtelierOO_101
             Domicile = dom;
         }
 
-        public int CompareTo(Humain other)
+        //------------------------------------------
+        //
+        //------------------------------------------
+        public int CompareTo(Humain? other)
         {
-            if (this.Domicile.Ville.CompareTo(other.Domicile.Ville) == 1)
+            if (other == null) return -1;
+            if (Domicile.Ville.CompareTo(other.Domicile.Ville) == 1)
                 return 1;
-            if (this.Domicile.Ville.CompareTo(other.Domicile.Ville) == -1)
+            if (Domicile.Ville.CompareTo(other.Domicile.Ville) == -1)
                 return -1;
 
-            if (this.Domicile.Rue.CompareTo(other.Domicile.Rue) == 1)
+            if (Domicile.Rue.CompareTo(other.Domicile.Rue) == 1)
                 return 1;
-            if (this.Domicile.Rue.CompareTo(other.Domicile.Rue) == -1)
+            if (Domicile.Rue.CompareTo(other.Domicile.Rue) == -1)
                 return -1;
 
-            return (this.Domicile.NumCivique.CompareTo(other.Domicile.NumCivique)
-);
+            return Domicile.NumCivique.CompareTo(other.Domicile.NumCivique)
+;
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public static Humain HumainAleatoire()
         {
             Util u = new();
             string nom = u.tabNoms[u.rdm.Next(0, 10)];
-            DateTime naissance = new DateTime(u.rdm.Next(1900,2008), u.rdm.Next(1,13), u.rdm.Next(1,29));
-            string numCiv = (u.rdm.Next(100, 10000)).ToString();
+            DateTime naissance = new DateTime(u.rdm.Next(1900, 2008), u.rdm.Next(1, 13), u.rdm.Next(1, 29));
+            string numCiv = u.rdm.Next(100, 10000).ToString();
             Adresse adr = new Adresse(numCiv, u.tabRues[u.rdm.Next(0, 10)], u.tabVilles[u.rdm.Next(0, 10)]);
             string s = "M";
             if (u.rdm.Next(0, 2) == 0)
                 s = "F";
 
-            return new Humain(nom, naissance, s, adr );
+            return new Humain(nom, naissance, s, adr);
         }
 
         //------------------------------------------

@@ -1,10 +1,17 @@
-﻿using System;
+﻿//-----------------------------------------
+//  Nom: Etudiant.cs
+//  Auteur : Alain Martel
+//  Date : 2025-03-05
+//  Description: 
+//-----------------------------------------
+using AtelierOO_101.ClassesUtil;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtelierOO_101
+namespace AtelierOO_101.Classes
 {
     internal class Etudiant : Humain
     {
@@ -15,6 +22,9 @@ namespace AtelierOO_101
 
         static int MatMax = 1000000;
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public Etudiant()
         {
             _u.Sep("In constructeur Etudiant()");
@@ -22,6 +32,9 @@ namespace AtelierOO_101
             Programme = "Techniques de l'informatique";
             Moyenne = 0.99;
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         public Etudiant(string mat, string prog, double moy)
         {
             _u.Sep("In constructeur Etudiant(m,p,mo)");
@@ -29,6 +42,9 @@ namespace AtelierOO_101
             Programme = prog;
             Moyenne = moy;
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         public Etudiant(string n, DateTime nais, string g, string mat, string prog, double moy) : base(n, nais, g)
         {
             _u.Sep("In constructeur Etudiant(n,ne, g, m,p,mo)");
@@ -36,6 +52,9 @@ namespace AtelierOO_101
             Programme = prog;
             Moyenne = moy;
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         public Etudiant(string n, DateTime nais, string g, Adresse dom, string prog, double moy) :
             base(n, nais, g, dom)
         {
@@ -44,6 +63,9 @@ namespace AtelierOO_101
             Programme = prog;
             Moyenne = moy;
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         public Etudiant(string n, DateTime nais, string g, Adresse dom, string mat, string prog, double moy) :
             base(n, nais, g, dom)
         {
@@ -53,6 +75,9 @@ namespace AtelierOO_101
             Moyenne = moy;
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public override void Afficher()
         {
             base.Afficher();

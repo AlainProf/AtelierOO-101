@@ -1,16 +1,17 @@
 ﻿//-----------------------------------------
-//  Nom: 
+//  Nom: TicTacToe.cs
 //  Auteur : Alain Martel
 //  Date : 2025-0
 //  Description: 
 //-----------------------------------------
+using AtelierOO_101.ClassesUtil;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtelierOO_101
+namespace AtelierOO_101.Applications
 {
     internal class TicTacToe
     {
@@ -26,7 +27,7 @@ namespace AtelierOO_101
         {
             while (_partieEnCours)
             {
-               
+
 
                 AfficherGrille();
                 ProchainCoup();
@@ -48,7 +49,7 @@ namespace AtelierOO_101
         private bool CoupGagnant()
         {
             // Gagnant par une ligne
-            if (_cases[0]!=' ' && _cases[0] == _cases[1] && _cases[1] == _cases[2])
+            if (_cases[0] != ' ' && _cases[0] == _cases[1] && _cases[1] == _cases[2])
             {
                 return true;
             }
@@ -123,13 +124,13 @@ namespace AtelierOO_101
         //------------------------------------------
         private bool CoupLegal(char coup)
         {
-            if ( coup =='0' || coup == '1' || coup == '2' || coup == '3' || coup == '4' || coup == '5' || coup == '6' || coup == '7' || coup == '8')
+            if (coup == '0' || coup == '1' || coup == '2' || coup == '3' || coup == '4' || coup == '5' || coup == '6' || coup == '7' || coup == '8')
             {
                 int idxCoup = int.Parse(coup.ToString());
                 if (_cases[idxCoup] == ' ')
-                    return true;    
+                    return true;
             }
-            return false;   
+            return false;
         }
     }
 }

@@ -1,19 +1,33 @@
-﻿using System;
+﻿//-----------------------------------------
+//  Nom: ExploPoly.cs
+//  Auteur : Alain Martel
+//  Date : 2025-03-05
+//  Description: 
+//-----------------------------------------
+using AtelierOO_101.Classes;
+using AtelierOO_101.ClassesUtil;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtelierOO_101
+namespace AtelierOO_101.Explo
 {
     internal class ExploPoly
     {
         Util _u = new();
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void Recensement()
-        { 
+        {
             ChargementPopulation();
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         void ChargementPopulation()
         {
             string FICHIER_POPULATION = @"d:\alino\atelier\pop.txt";
@@ -22,7 +36,7 @@ namespace AtelierOO_101
             if (File.Exists(FICHIER_POPULATION))
             {
                 StreamReader reader = new StreamReader(FICHIER_POPULATION);
-                string ligneCourante;
+                string? ligneCourante;
                 Parseur psr = new Parseur();
 
                 List<Humain> listPop = new List<Humain>();

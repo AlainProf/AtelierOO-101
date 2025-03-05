@@ -4,6 +4,8 @@
 //  Date : 2025-01-27
 //  Description: 
 //-----------------------------------------
+using AtelierOO_101.Classes;
+using AtelierOO_101.ClassesUtil;
 using AtelierOO_101.Donnees;
 using AtelierOO_101.Poker;
 using AtelierOO_101.TP1;
@@ -14,18 +16,18 @@ using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtelierOO_101
+namespace AtelierOO_101.Explo
 {
     internal class Exploration
     {
         const int NB_COLONNNES = 27;
         const int NB_RANGEES = 20;
- 
-        Util u = new ();
+
+        Util u = new();
         const int taille = 10;
         int[] tabEntiers = new int[taille];
         Humain[] tabGr101 = new Humain[taille];
-        Random r = new ();
+        Random r = new();
 
 
         List<int> listeEntiers = new();
@@ -88,9 +90,9 @@ namespace AtelierOO_101
 
             for (int i = 0; i < taille; i++)
             {
-                Humain h = new Humain(u.tabNoms[r.Next(0,10)], new DateTime(r.Next(1964, 2008), r.Next(1, 13), r.Next(1, 29)));
+                Humain h = new Humain(u.tabNoms[r.Next(0, 10)], new DateTime(r.Next(1964, 2008), r.Next(1, 13), r.Next(1, 29)));
                 Adresse adresse = new Adresse("1234", "rue Cartier", "Laval");
-                h.Domicile = adresse;    
+                h.Domicile = adresse;
                 lstGr101.Add(h);
             }
             u.Sep("Liste d'humains");
@@ -181,25 +183,25 @@ namespace AtelierOO_101
         //------------------------------------------
         public void ExploTableauH()
         {
-           /* u.Titre("Tableau d'Humain");
+            /* u.Titre("Tableau d'Humain");
 
-            for (int i = 0; i < tabGr101.Length; i++)
-            {
-                tabGr101[i] = new Humain(tabNoms[r.Next(0,10)], new DateTime(r.Next(1964, 2008), r.Next(1,13), r.Next(1,29)), "M");
-            }
-            u.Sep("Tableau d'humain");
-            AfficherTabH();
-            u.Pause();
+             for (int i = 0; i < tabGr101.Length; i++)
+             {
+                 tabGr101[i] = new Humain(tabNoms[r.Next(0,10)], new DateTime(r.Next(1964, 2008), r.Next(1,13), r.Next(1,29)), "M");
+             }
+             u.Sep("Tableau d'humain");
+             AfficherTabH();
+             u.Pause();
 
-            Array.Sort(tabGr101, Humain.ComparerNom);
-            u.Sep("Tableau trié");
-            AfficherTabH();
-            u.Pause();
+             Array.Sort(tabGr101, Humain.ComparerNom);
+             u.Sep("Tableau trié");
+             AfficherTabH();
+             u.Pause();
 
-            Array.Sort(tabGr101, Humain.ComparerAge);
-            u.Sep("Tableau trié selon l'àge");
-            AfficherTabH();
-            u.Pause();*/
+             Array.Sort(tabGr101, Humain.ComparerAge);
+             u.Sep("Tableau trié selon l'àge");
+             AfficherTabH();
+             u.Pause();*/
         }
 
         //------------------------------------------
@@ -275,7 +277,7 @@ namespace AtelierOO_101
             u.Sep(aujh.ToString());
             u.Sep($"Demain nous serons {demain}");
 
-       
+
 
             Carte c1 = new Carte();
             c1.Afficher();
@@ -284,7 +286,7 @@ namespace AtelierOO_101
             c2.Afficher();
             u.Pause();
 
-            Paquet paq = new Paquet();  
+            Paquet paq = new Paquet();
             paq.Afficher();
             u.Pause();
 
@@ -297,6 +299,9 @@ namespace AtelierOO_101
 
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void ExecException()
         {
             try
@@ -306,7 +311,7 @@ namespace AtelierOO_101
             }
             catch (DivideByZeroException ex)
             {
-                throw (new Exception("division par Zéro"));
+                throw new Exception("division par Zéro " + ex.Message);
                 //Console.WriteLine($"Une exception est survenue: division par Zéro");
             }
             catch (Exception ex)
@@ -322,11 +327,17 @@ namespace AtelierOO_101
 
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         private void divParZ(int den)
         {
             int va = 1000 / den;
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void ExecHeritage()
         {
             u.Titre("Protected et Héritage");
@@ -348,12 +359,18 @@ namespace AtelierOO_101
 
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void ReadOnlyVsConst()
         {
             u.Titre("Const vs readonly");
             u.Pause();
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void ExercInterface()
         {
             u.Titre("Interface ");
@@ -371,7 +388,7 @@ namespace AtelierOO_101
 
 
             u.Sep("Liste originale");
-            foreach(Humain h in tmnt)
+            foreach (Humain h in tmnt)
             {
                 h.Afficher();
             }
@@ -395,6 +412,9 @@ namespace AtelierOO_101
             u.Pause();
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void PileEtFile()
         {
             u.Titre("Pile et File (stack et Queue)");
@@ -417,7 +437,7 @@ namespace AtelierOO_101
 
             u.Sep("Position de sortie:");
 
-            while(entreeGarage.Count > 0)
+            while (entreeGarage.Count > 0)
             {
                 Voiture tmp = entreeGarage.Pop();
                 tmp.Afficher();
@@ -451,6 +471,9 @@ namespace AtelierOO_101
             u.Pause();
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public void Tab2D()
         {
             u.Titre("Tableau à deux dimension");
@@ -465,30 +488,36 @@ namespace AtelierOO_101
             u.Pause();
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         void InitGrilleA(ref char[,] gr)
         {
             for (int y = 0; y < NB_RANGEES; y++)
             {
                 for (int x = 0; x < NB_COLONNNES; x++)
                 {
-                    switch(u.rdm.Next(0,3))
+                    switch (u.rdm.Next(0, 3))
                     {
-                      case 0:
-                        gr[x, y] = 'O';
-                        break;
+                        case 0:
+                            gr[x, y] = 'O';
+                            break;
 
-                     case 1:
-                        gr[x, y] = 'X';
-                        break;
+                        case 1:
+                            gr[x, y] = 'X';
+                            break;
 
-                     case 2:
-                        gr[x, y] = '_';
-                        break;
+                        case 2:
+                            gr[x, y] = '_';
+                            break;
 
                     }
                 }
             }
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         void InitGrilleH(ref char[,] gr)
         {
             int iter = 65;
@@ -505,6 +534,9 @@ namespace AtelierOO_101
                 }
             }
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         void InitGrille(ref char[,] gr)
         {
             int iter = 65;
@@ -521,6 +553,9 @@ namespace AtelierOO_101
                 }
             }
         }
+        //------------------------------------------
+        //
+        //------------------------------------------
         void AfficherGrille(char[,] gr)
         {
             for (int x = 0; x < NB_COLONNNES; x++)
@@ -535,20 +570,22 @@ namespace AtelierOO_101
             }
         }
 
-        public void GenereBD(int nbEnreg=1000000)
+        //------------------------------------------
+        //
+        //------------------------------------------
+        public void GenereBD(int nbEnreg = 1000000)
         {
             u.Titre("Faudrait réactiver le code");
             u.Pause();
-            return;
 
             ////////////////////////////////////////
 
             u.Titre($"Génération de {nbEnreg} humains");
             List<Humain> population = new List<Humain>();
 
-            for(int i =0; i< nbEnreg; i++)
+            for (int i = 0; i < nbEnreg; i++)
             {
-                population.Add(Util.GenereHumainAleatoire());  
+                population.Add(Util.GenereHumainAleatoire());
             }
 
             u.Pause();
@@ -557,7 +594,7 @@ namespace AtelierOO_101
             int cmpStagiaires = 0;
 
             StreamWriter sw = new StreamWriter(@"d:\alino\atelier\pop.txt");
-            
+
             foreach (Humain h2 in population)
             {
                 StringBuilder sb = new();
@@ -569,7 +606,7 @@ namespace AtelierOO_101
 
                 if (h2 is Etudiant)
                 {
-                    Etudiant eTmp = h2 as Etudiant;
+                    Etudiant? eTmp = h2 as Etudiant;
                     if (eTmp != null)
                     {
                         cmpEtudiants++;
@@ -579,8 +616,11 @@ namespace AtelierOO_101
                     {
                         cmpEtudiants--;
                         cmpStagiaires++;
-                        Stagiaire stag = eTmp as Stagiaire; 
-                        sb.Append($";{stag.Entreprise};{stag.Salaire}");
+                        Stagiaire? stag = eTmp as Stagiaire;
+                        if (stag != null)
+                        {
+                            sb.Append($";{stag.Entreprise};{stag.Salaire}");
+                        }
 
                     }
                 }

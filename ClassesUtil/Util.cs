@@ -4,6 +4,7 @@
 //  Date : 2025-01-27
 //  Description: 
 //-----------------------------------------
+using AtelierOO_101.Classes;
 using AtelierOO_101.Donnees;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtelierOO_101
+namespace AtelierOO_101.ClassesUtil
 {
     enum JourSemaine
     {
@@ -34,11 +35,14 @@ namespace AtelierOO_101
         public readonly string[] tabRues = new string[10] { "de l'Hotel", "du Parc", "Fournier", "Du palias", "2ième avenue", "boul labelle", "aut 15 nord", "sans issuee", "Donavan", "Boul arthur-sauvé" };
         public readonly string[] tabVilles = new string[10] { "Singe et rhum", "montréal", "laval", "Québec", "Trois rivière", "Gatineua", "Ottawa", "Longueuil", "Sherbrooke", "Teerebonne" };
 
-        bool _debogue; 
+        bool _debogue;
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public Util(bool debogue = true)
         {
-            _debogue = debogue; 
+            _debogue = debogue;
         }
 
 
@@ -122,12 +126,15 @@ namespace AtelierOO_101
         //------------------------------------------
         //
         //------------------------------------------
-        public void Sep(string msg="")
+        public void Sep(string msg = "")
         {
             if (debogue)
-               Console.WriteLine($"----------{msg}----------");
+                Console.WriteLine($"----------{msg}----------");
         }
 
+        //------------------------------------------
+        //
+        //------------------------------------------
         public static Humain GenereHumainAleatoire()
         {
             Util u = new Util();
@@ -147,7 +154,7 @@ namespace AtelierOO_101
             int iRue = u.rdm.Next(0, 500);
             int iVille = u.rdm.Next(0, 50);
 
-            Adresse dom = new Adresse((u.rdm.Next(17, 14199)).ToString(),
+            Adresse dom = new Adresse(u.rdm.Next(17, 14199).ToString(),
                                       DonnesDeBase.tabRues[iRue],
                                       DonnesDeBase.tabVilles[iVille]);
 
@@ -157,7 +164,7 @@ namespace AtelierOO_101
                 DateTime limMin = new DateTime(2008, 02, 24);
                 DateTime limMax = new DateTime(1975, 02, 24);
 
-                if (naissance.Ticks > limMin.Ticks && naissance.Ticks < limMax.Ticks )
+                if (naissance.Ticks > limMin.Ticks && naissance.Ticks < limMax.Ticks)
                 {
                     return new Humain(nom, naissance, sexe, dom);
                 }
@@ -168,9 +175,9 @@ namespace AtelierOO_101
                 if (tirage == 5)
                 {
                     int iEntrep = u.rdm.Next(0, 50);
-                    return new Stagiaire(nom, naissance, sexe, dom, 
+                    return new Stagiaire(nom, naissance, sexe, dom,
                                          DonnesDeBase.tabProg[iProg], u.rdm.Next(10, 100),
-                                         DonnesDeBase.tabEntreprises[iEntrep], u.rdm.Next(0,16000));
+                                         DonnesDeBase.tabEntreprises[iEntrep], u.rdm.Next(0, 16000));
 
                 }
 
