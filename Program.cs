@@ -17,6 +17,8 @@ namespace AtelierOO_101
     internal class Program
     {
         static Util u = new Util();
+        static ExploPoly exploPoly = new();
+
         //------------------------------------------
         //
         //------------------------------------------
@@ -114,7 +116,6 @@ namespace AtelierOO_101
             char choix = u.SaisirChar();
             Exploration explo = new(); ;
             ExploFichiers exploF = new();
-            ExploPoly exploPoly = new();
 
             switch (choix.ToString().ToLower())
             {
@@ -147,7 +148,7 @@ namespace AtelierOO_101
                     explo.ExercInterface();
                     break;
                 case ("j"):
-                    u.Titre("En construction");
+                    exploPoly.MilieuStage();
                     break;
                 case ("k"):
                     explo.PileEtFile();
@@ -167,13 +168,13 @@ namespace AtelierOO_101
                     onu.Exec();
                     break;
                 case ("p"):
-                    u.Titre("En construction");
+                    exploPoly.PretEtBourse();
                     break;
                 case ("r"):
                     explo.ExploRefOut();
                     break;
                 case ("s"):
-                    u.Titre("En construction");
+                    exploPoly.ListeElecteurs();
                     break;
                 case ("t"):
                     TicTacToe ttt = new();
